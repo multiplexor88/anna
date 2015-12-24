@@ -49,13 +49,5 @@ public class NewEmptyJUnitTest {
     //
     @Test
     public void hello() {
-        try {
-            System.out.println("TEST");
-            MainApp ma = new MainApp();
-            Stage stage = new Stage();
-            ma.start(stage);
-        } catch (Exception ex) {
-            Logger.getLogger(NewEmptyJUnitTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
