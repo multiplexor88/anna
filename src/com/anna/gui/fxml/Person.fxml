@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="360.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.PersonController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.firstName" />
+            <TextField fx:id="firstNameTxt" prefHeight="22.0" prefWidth="200.0" />
+        </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.lastName" />
+            <TextField fx:id="lastNameTxt" prefHeight="22.0" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.patronymic" />
+            <TextField fx:id="patronymicTxt" prefHeight="22.0" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="274.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.gender" />
+            <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="14.0" text="Button" visible="false" />
+            <RadioButton fx:id="maleCheck" mnemonicParsing="false" selected="true" text="%key.person.male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup>
+            </RadioButton>
+            <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="28.0" text="Button" visible="false" />
+            <RadioButton fx:id="femaleCheck" mnemonicParsing="false" text="%key.person.female" toggleGroup="$gender" />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.address" />
+            <Button fx:id="addressBtn" mnemonicParsing="false" onAction="#onAddress" prefHeight="22.0" prefWidth="200.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.contact.title" />
+            <Button fx:id="contactBtn" mnemonicParsing="false" onAction="#onContact" prefHeight="22.0" prefWidth="200.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.event.hobbies" />
+            <Button fx:id="hobbyBtn" mnemonicParsing="false" onAction="#onHobby" prefHeight="22.0" prefWidth="200.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.event.occupations" />
+            <Button fx:id="occupationBtn" mnemonicParsing="false" onAction="#onOccupation" prefHeight="22.0" prefWidth="200.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="22.0" prefWidth="60.0" text="%key.general.cancel" />
+         </items>
+      </ToolBar>
+   </children>
+</VBox>

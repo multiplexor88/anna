@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.AddressController">
+   <children>
+      <ToolBar>
+        <items>
+          <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.country" />
+            <TextField fx:id="countryTxt" prefWidth="200.0" />
+        </items>
+      </ToolBar>
+      <ToolBar>
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.state" />
+            <TextField fx:id="stateTxt" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar>
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.city" />
+            <TextField fx:id="cityTxt" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar>
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.street" />
+            <TextField fx:id="streetTxt" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar>
+         <items>
+            <Button mnemonicParsing="false" prefWidth="100.0" text="Email" visible="false" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefWidth="100.0" text="%key.general.ok" />
+            <Button fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#onCancel" prefWidth="100.0" text="%key.general.cancel" />
+         </items>
+      </ToolBar>
+   </children>
+</VBox>

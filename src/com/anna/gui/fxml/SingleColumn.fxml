@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.SingleColumnController">
+   <children>
+      <TableView fx:id="tableView" onKeyPressed="#onKeyPressed" prefHeight="200.0" prefWidth="200.0" />
+      <ToolBar onKeyPressed="#onKeyPressed" prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" text="%key.listDataTable.add" />
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEdit" text="%key.listDataTable.Edit" />
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="%key.listDataTable.Delete" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" />
+        </items>
+      </ToolBar>
+   </children>
+</VBox>

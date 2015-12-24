@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.ContactController">
+   <children>
+      <ToolBar>
+        <items>
+          <Button mnemonicParsing="false" prefWidth="160.0" text="%key.contact.cellNumber" />
+            <TextField fx:id="cellNumberTxt" prefWidth="200.0" />
+        </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="160.0" text="%key.contact.homeNumber" />
+            <TextField fx:id="homeNumberTxt" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="160.0" text="%key.contact.workNumber" />
+            <TextField fx:id="workNumberTxt" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="160.0" text="%key.contact.email" />
+            <TextField fx:id="emailTxt" prefWidth="200.0" />
+         </items>
+      </ToolBar>
+      <ToolBar>
+         <items>
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" />
+            <Button fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" />
+         </items>
+      </ToolBar>
+   </children>
+</VBox>

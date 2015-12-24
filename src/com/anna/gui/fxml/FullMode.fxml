@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.FullModeController">
+   <center>
+      <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="EVENTS_NAME_DESCRIPT" onSelectionChanged="#onSelectionChanged" text="%key.currentEvents.title">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab fx:id="EVENTS" onSelectionChanged="#onSelectionChanged" text="%key.events.title">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab fx:id="PERSONS_FULL" onSelectionChanged="#onSelectionChanged" text="%key.persons.title">
+              <content>
+                <AnchorPane fx:id="personsPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="HOBBIES" onSelectionChanged="#onSelectionChanged" text="%key.event.hobbies">
+              <content>
+                <AnchorPane fx:id="hobbiesPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="OCCUPATIONS" onSelectionChanged="#onSelectionChanged" text="%key.event.occupations">
+              <content>
+                <AnchorPane />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelBtn" layoutX="194.0" layoutY="-4.0" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+            <Button fx:id="okBtn" layoutX="461.0" layoutY="3.0" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="60.0" />
+            <Button fx:id="shortModeBtn" mnemonicParsing="false" onAction="#onShortMode" text="%key.mainWindow.shortMode" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="92.0" />
+            <Button fx:id="displayTimeBtn" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" text="TIME" AnchorPane.leftAnchor="10.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

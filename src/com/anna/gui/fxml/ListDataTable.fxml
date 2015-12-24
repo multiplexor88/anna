@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="parent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.ListDataTableController">
+   <children>
+      <AnchorPane fx:id="underTableParent" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="tableView" onKeyPressed="#onKeyPressed" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <ToolBar fx:id="toolBar" onKeyPressed="#onKeyPressed">
+        <items>
+          <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" prefWidth="48.0" text="%key.listDataTable.add" />
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEdit" prefWidth="48.0" text="%key.listDataTable.Edit" />
+            <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="%key.listDataTable.Delete" />
+            <TextField fx:id="searchTxt" onKeyTyped="#onSearch" prefHeight="22.0" prefWidth="275.0" />
+            <Label text="%key.listDataTable.Search" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefWidth="48.0" text="%key.general.ok" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" />
+        </items>
+      </ToolBar>
+   </children>
+</VBox>

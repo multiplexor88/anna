@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="277.0" prefWidth="254.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.EventController">
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" prefWidth="80.0" text="%key.event.date" />
+            <DatePicker fx:id="dateDtPickr" prefWidth="155.0" />
+        </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="80.0" text="%key.event.name" />
+            <TextField fx:id="nameTxt" prefHeight="22.0" prefWidth="155.0" />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefWidth="80.0" text="%key.event.description" />
+            <Button fx:id="descriptionBtn" mnemonicParsing="false" onAction="#onDescription" prefHeight="22.0" prefWidth="155.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="80.0" text="%key.event.people" />
+            <Button fx:id="peopleBtn" mnemonicParsing="false" onAction="#onPeople" prefHeight="22.0" prefWidth="155.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="80.0" text="%key.event.hobbies" />
+            <Button fx:id="hobbiesBtn" mnemonicParsing="false" onAction="#onHobbies" prefHeight="22.0" prefWidth="155.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="80.0" text="%key.event.occupations" />
+            <Button fx:id="occupationsBtn" mnemonicParsing="false" onAction="#onOccupations" prefHeight="22.0" prefWidth="155.0" text="..." />
+         </items>
+      </ToolBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="75.0" text="Button" visible="false" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefHeight="22.0" prefWidth="75.0" text="%key.general.ok" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="22.0" prefWidth="75.0" text="%key.general.cancel" />
+        </items>
+      </ToolBar>
+   </children>
+</VBox>
