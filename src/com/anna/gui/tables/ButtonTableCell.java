@@ -30,12 +30,12 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
     public ButtonTableCell(ButtonCommand command)
     {
         this.command = command;
-    }
+    }  
     
     @Override
     protected void updateItem(T item, boolean empty) 
     {
-        if(!empty)
+        if(!empty && item != null)
         {
             super.updateItem(item, empty);
             setGraphic(button);
@@ -43,9 +43,9 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
             {
                 try 
                 {
-                    if(getTableRow().getIndex() < 0)
+                    if(getTableRow().getIndex() < 0 || getTableRow().getIndex() >= getTableView().getItems().size())
                         return;
-
+                     
                     command.setData(item);
                     command.execute(event);
 
@@ -56,6 +56,7 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
 
                     /*set data  t to object s*/
                     S s = (S)getTableRow().getItem();
+                    
                     final String propName = ((PropertyValueFactory)getTableColumn().getCellValueFactory()).getProperty();
                     String methodName = "set" + propName.toUpperCase().charAt(0) + propName.substring(1);
                     Method method = s.getClass().getDeclaredMethod(methodName, t.getClass());
@@ -74,6 +75,11 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
             });
         }
     }
+
+
+
+    
+    
 }
 
 /*
