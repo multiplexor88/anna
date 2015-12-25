@@ -19,12 +19,32 @@ public class TextAreaController extends AbstractController
     private TextArea    textAreaTxt;
 
     @Override
-    public Object getData() {
-        return textAreaTxt.getText();
+    public void setData(Object data) {
+        if(data == null)
+        {
+            original = null;
+            copy = null;
+            clearContext();
+            return;
+        }
+        
+        original = data;
+        copy = new String((String) original);
+        
+        textAreaTxt.setText((String)copy);
     }
 
     @Override
-    public void setData(Object data) {
-        textAreaTxt.setText((String)data);
+    public void clearContext() {
+        textAreaTxt.clear();
     }
+
+    @Override
+    protected boolean saveData() {
+        copy = textAreaTxt.getText();
+        return true;
+    }
+    
+    
+    
 }

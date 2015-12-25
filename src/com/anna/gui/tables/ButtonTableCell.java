@@ -35,7 +35,7 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
     @Override
     protected void updateItem(T item, boolean empty) 
     {
-        if(!empty && item != null)
+        if(!empty)
         {
             super.updateItem(item, empty);
             setGraphic(button);
