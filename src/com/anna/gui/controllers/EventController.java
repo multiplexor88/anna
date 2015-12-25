@@ -6,6 +6,9 @@
 package com.anna.gui.controllers;
 
 import com.anna.data.Event;
+import com.anna.data.Person;
+import com.anna.gui.commands.ListButtonCommand;
+import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.interfaces.AbstractController;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -117,24 +120,56 @@ public class EventController extends AbstractController
     @FXML
     private void onDescription(ActionEvent event)
     {
+        if(copy == null) copy = new Event();
         
+        command = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.event.description"), String.class);
+        command.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.TEXT_AREA));
+        command.setData(((Event)copy).getDescription());
+        command.execute(event);
+        String description = (String) command.getData();
+        if(description != null)
+            ((Event)copy).setDescription(description);
     }
     
     @FXML
     private void onPeople(ActionEvent event)
     {
+        if(copy == null) copy = new Event();
         
+        command = new ListButtonCommand(DataLoader.getLangResources().getString("key.event.people"));
+        command.setController(addPersonsToEventController);
+        command.setData(((Event)copy).getPersonList());
+        command.execute(event);
+        ArrayList personList = (ArrayList) command.getData();
+        if(personList != null)
+            ((Event)copy).setPersonList(personList);
     }
     
     @FXML
     private void onHobbies(ActionEvent event)
     {
+        if(copy == null) copy = new Event();
         
+        command = new ListButtonCommand(DataLoader.getLangResources().getString("key.event.hobbies"));
+        command.setController(hobbiesController);
+        command.setData(((Event)copy).getHobbyList());
+        command.execute(event);
+        ArrayList hobbyList = (ArrayList) command.getData();
+        if(hobbyList != null)
+            ((Event)copy).setHobbyList(hobbyList);
     }
     
     @FXML
     private void onOccupations(ActionEvent event)
     {
+        if(copy == null) copy = new Event();
         
+        command = new ListButtonCommand(DataLoader.getLangResources().getString("key.event.occupations"));
+        command.setController(occupationsController);
+        command.setData(((Event)copy).getOccupationList());
+        command.execute(event);
+        ArrayList occupationList = (ArrayList) command.getData();
+        if(occupationList != null)
+            ((Event)copy).setOccupationList(occupationList);
     }
 }
