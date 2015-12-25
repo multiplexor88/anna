@@ -11,15 +11,10 @@ import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.controllers.ControllerFactory;
 import com.anna.gui.controllers.DataLoader;
-import com.anna.gui.controllers.ListDataTableController;
-import com.anna.gui.controllers.TextAreaController;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.ButtonCommand;
 import com.anna.gui.tables.TableFactory.TableType;
-import com.anna.service.DataBaseService;
-import java.util.ResourceBundle;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -63,7 +58,7 @@ public class EventsTable extends SimpleTable<Event>
                                         break;
                     
                 case "personList":      ButtonCommand command_3 = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
-                                        AbstractController controller = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.PEOPLE);
+                                        AbstractController controller = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT);
                                         AbstractTable table = TableFactory.create(TableType.PERSONS_FLP);
                                         controller.setTable(table);
                                         command_3.setController(controller);

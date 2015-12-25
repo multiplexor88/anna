@@ -36,15 +36,17 @@ public class EventController extends AbstractController
     AbstractController                  textAreaController,
                                         personsController,
                                         hobbiesController,
-                                        occupationsController;
+                                        occupationsController,
+                                        addPersonsToEventController;
    
     @FXML
     protected  void initialize()
     {
         textAreaController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.TEXT_AREA);
-        personsController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.PEOPLE);
+        //personsController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.PEOPLE);
         hobbiesController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_HOBBIES);
         occupationsController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_OCCUPATIONS);
+        addPersonsToEventController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT);
     }
     
     @Override
@@ -67,7 +69,7 @@ public class EventController extends AbstractController
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         
         //dateDtPickr.setValue(LocalDate.parse(((Event)copy).getDate(), dtf));
-        dateDtPickr.setValue(LocalDate.parse(((Event)copy).getDate()));
+        dateDtPickr.setValue(LocalDate.parse(((Event)copy).getDate(),dtf));
         nameTxt.setText(((Event)copy).getName());
         personList = ((Event)copy).getPersonList();
         occupationList = ((Event)copy).getOccupationList();

@@ -1,13 +1,8 @@
 package com.anna.gui.controllers;
 import com.anna.gui.controllers.ControllerFactory.ControllerType;
-import com.anna.gui.tables.EventsTable;
-import com.anna.gui.tables.PersonsTable;
 import com.anna.gui.interfaces.AbstractController;
-import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.tables.TableFactory;
 import com.anna.gui.tables.TableFactory.TableType;
-import com.anna.repository.EventRepository;
-import com.anna.service.DataBaseService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,19 +11,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -154,8 +146,9 @@ public class FullModeController extends AbstractController
         List items = DataLoader.getDataBaseService().getEventService().getRepository().findByDate(date); 
         
         table = TableFactory.create(TableType.EVENTS_NAME_DESCRIPT);
-        table.getTableView().setItems(FXCollections.observableArrayList(items));
+        //table.getTableView().setItems(FXCollections.observableArrayList(items));
         curTabController.setTable(table);
+        curTabController.setData(FXCollections.observableArrayList(items));
         
         Pane pane = curTabController.getParent();
         AnchorPane.setBottomAnchor(pane, 0.0);

@@ -7,6 +7,7 @@ package com.anna.data;
 
 import com.anna.gui.interfaces.MyCloneable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -64,7 +65,8 @@ public class Event implements MyCloneable
 
     public Event() 
     {
-        date = LocalDate.now().toString();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.YYYY");
+        date = LocalDate.now().format(dtf);
     }
 
     public Event(Long id, String date, String name, String description, ArrayList<Person> personList, ArrayList<Hobby> hobbyList, ArrayList<Occupation> occupationList) {
