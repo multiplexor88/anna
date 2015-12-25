@@ -58,10 +58,7 @@ public class EventsTable extends SimpleTable<Event>
                                         break;
                     
                 case "personList":      ButtonCommand command_3 = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
-                                        AbstractController controller = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT);
-                                        AbstractTable table = TableFactory.create(TableType.PERSONS_FLP);
-                                        controller.setTable(table);
-                                        command_3.setController(controller);
+                                        command_3.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_3)));
                                         break;
                     

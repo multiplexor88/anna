@@ -27,6 +27,8 @@ public class AddPersonsToEventBuilder implements Builder
     public AbstractController build() 
     {
         ListDataTableController mainController = (ListDataTableController) DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml");
+        //set any controller
+        mainController.setParentController(DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml"));
         
         mainController.getEditBtn().setDisable(true);
         mainController.setTable(TableFactory.create(TableFactory.TableType.PERSONS_FLP));
@@ -34,6 +36,8 @@ public class AddPersonsToEventBuilder implements Builder
         ButtonCommand displayDataBasePersonsCommand = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
         ListDataTableController displayDataBasePersonsController = (ListDataTableController) DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml");
         displayDataBasePersonsController.getEditBtn().setDisable(true);
+        displayDataBasePersonsController.getAddBtn().setDisable(true);
+        displayDataBasePersonsController.getDeleteBtn().setDisable(true);
         displayDataBasePersonsController.getOkBtn().setVisible(true);
         displayDataBasePersonsController.getCancelBtn().setVisible(true);
         displayDataBasePersonsController.setParentController(mainController);

@@ -245,7 +245,7 @@ public class Person implements MyCloneable
         if (!Objects.equals(this.gender, other.gender)) {
             return false;
         }
-        if (!Objects.equals(this.contact, other.contact)) {
+        /*if (!Objects.equals(this.contact, other.contact)) {
             return false;
         }
         if (!Objects.equals(this.addressList, other.addressList)) {
@@ -256,7 +256,7 @@ public class Person implements MyCloneable
         }
         if (!Objects.equals(this.hobbyList, other.hobbyList)) {
             return false;
-        }
+        }*/
         return true;
     }
 

@@ -35,41 +35,44 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
     @Override
     protected void updateItem(T item, boolean empty) 
     {
-        super.updateItem(item, empty);
-        setGraphic(button);
-        button.setOnAction((ActionEvent event) -> 
+        if(!empty)
         {
-            try 
+            super.updateItem(item, empty);
+            setGraphic(button);
+            button.setOnAction((ActionEvent event) -> 
             {
-                if(getTableRow().getIndex() < 0)
-                    return;
-                
-                command.setData(item);
-                command.execute(event);
-                
-                /*get data and check on null*/
-                Object t = command.getData();
-                if(t == null)
-                    return;
-                
-                /*set data  t to object s*/
-                S s = (S)getTableRow().getItem();
-                final String propName = ((PropertyValueFactory)getTableColumn().getCellValueFactory()).getProperty();
-                String methodName = "set" + propName.toUpperCase().charAt(0) + propName.substring(1);
-                Method method = s.getClass().getDeclaredMethod(methodName, t.getClass());
-                method.invoke(s, t);
-                
-                /*update data in current table view*/
-                updateIndex(getIndex());
-                
-                /*save to data base*/
-                DataLoader.getDataBaseService().getServiceByObjectType(s).getRepository().save(s);
-            } 
-            catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
-            {
-                Logger.getLogger(ButtonTableCell.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        });
+                try 
+                {
+                    if(getTableRow().getIndex() < 0)
+                        return;
+
+                    command.setData(item);
+                    command.execute(event);
+
+                    /*get data and check on null*/
+                    Object t = command.getData();
+                    if(t == null)
+                        return;
+
+                    /*set data  t to object s*/
+                    S s = (S)getTableRow().getItem();
+                    final String propName = ((PropertyValueFactory)getTableColumn().getCellValueFactory()).getProperty();
+                    String methodName = "set" + propName.toUpperCase().charAt(0) + propName.substring(1);
+                    Method method = s.getClass().getDeclaredMethod(methodName, t.getClass());
+                    method.invoke(s, t);
+
+                    /*update data in current table view*/
+                    updateIndex(getIndex());
+
+                    /*save to data base*/
+                    DataLoader.getDataBaseService().getServiceByObjectType(s).getRepository().save(s);
+                } 
+                catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) 
+                {
+                    Logger.getLogger(ButtonTableCell.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+            });
+        }
     }
 }
 
