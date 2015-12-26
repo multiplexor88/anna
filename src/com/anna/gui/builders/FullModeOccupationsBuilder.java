@@ -5,16 +5,14 @@
  */
 package com.anna.gui.builders;
 
-import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.data.Occupation;
+import com.anna.gui.commands.SimpleButtonCommand;
+import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.controllers.ListDataTableController;
 import com.anna.gui.controllers.SingleAddController;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.Builder;
 import com.anna.gui.interfaces.ButtonCommand;
-import com.anna.gui.interfaces.TableSearchStrategy;
-import com.anna.gui.strategies.OccupationsTableSearchStrategy;
-import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.tables.TableFactory;
 import com.anna.gui.tables.TableFactory.TableType;
 
@@ -38,9 +36,6 @@ public class FullModeOccupationsBuilder implements Builder
         AbstractController controller = DataLoader.getInstance().loadController(SingleAddController.class, "../fxml/SingleAdd.fxml");
         command.setController(controller);
         mainController.setCommand(command);
-        
-        TableSearchStrategy strategy = new OccupationsTableSearchStrategy();
-        mainController.setStrategy(strategy);
         
         return mainController;
     }

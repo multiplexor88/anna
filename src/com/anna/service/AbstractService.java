@@ -5,10 +5,8 @@
  */
 package com.anna.service;
 
-import java.io.Serializable;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import sun.reflect.generics.repository.AbstractRepository;
 
 /**
  *
