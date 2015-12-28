@@ -42,7 +42,7 @@ public class FullModeOccupationsBuilder implements Builder
         command.setController(controller);
         mainController.setCommand(command);
         
-        TableSearchStrategy strategy = new OccupationsTableSearchStrategy(table);
+        TableSearchStrategy strategy = new OccupationsTableSearchStrategy(table, false);
         mainController.setStrategy(strategy);
         
         return mainController;

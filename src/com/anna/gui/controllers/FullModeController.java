@@ -212,7 +212,7 @@ public class FullModeController extends AbstractController
             case EVENTS_NAME_DESCRIPT_PERSONS:
                 curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.EVENT_LIST);
                 String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-                table = TableFactory.create(TableType.EVENTS);
+                table = TableFactory.create(TableType.EVENTS_NAME_DESCRIPT_PERSONS);
                 curTabController.setTable(table);
                 curTabController.setStrategy(TableSearchStrategy.getStrategyByTableType(table));
                 items = DataLoader.getDataBaseService().getEventService().getRepository().findByDate(date); 
@@ -245,6 +245,9 @@ public class FullModeController extends AbstractController
         
         ((ListDataTableController)curTabController).getSearchTxt().clear();
         curTabController.setData(FXCollections.observableArrayList(items));
+        
+        //set how to find data when user erases data from searchTxt field: extract from DB or just from current table
+        curTabController.getStrategy().setSearchInCurrentData(false);
         
         /*must save data immediately*/
         //curTabController.setParentController(null);

@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface AddressRepository extends JpaRepository<Address,Long>
 {
     Address findByCountryAndStateAndCity(String string, String string2, String string3);
-    
-    List<Address> findByIdLike(String str);
 }

@@ -5,11 +5,8 @@
  */
 package com.anna.gui.strategies;
 
-import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.TableSearchStrategy;
-import java.util.List;
-import javafx.collections.FXCollections;
 
 /**
  *
@@ -17,23 +14,15 @@ import javafx.collections.FXCollections;
  */
 public class AddressTableSearchStrategy extends TableSearchStrategy
 {
-    public AddressTableSearchStrategy(){}
-    
-    public AddressTableSearchStrategy(AbstractTable table)
+
+    public AddressTableSearchStrategy(AbstractTable table, boolean searchInCurrentData)
     {
-        super(table);
+        super(table, searchInCurrentData);
     }
+
     
     @Override
-    public void search(String existedDataInForm, String typedData) 
-    {
-        List dataList = null; 
-
-        if(typedData.equals("\b") && existedDataInForm.isEmpty())/*if user delete all data in form*/
-            dataList = DataLoader.getDataBaseService().getAddressService().getRepository().findAll();
-        else
-            dataList = DataLoader.getDataBaseService().getAddressService().getRepository().findByIdLike((existedDataInForm+typedData).trim() + "%");
+    public void search(String existedDataInForm, String typedData) {
         
-        table.getTableView().setItems(FXCollections.observableArrayList(dataList));
     }
 }

@@ -33,19 +33,16 @@ public class FullModeHobbiesBuilder implements Builder
     public AbstractController build() 
     {
         ListDataTableController mainController = (ListDataTableController) DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml");
-        //mainController.getOkBtn().setVisible(true);
-       //mainController.getCancelBtn().setVisible(true);
         
         AbstractTable table = TableFactory.create(TableType.HOBBIES);
         mainController.setTable(table);
-        //mainController.setData(DataLoader.getDataBaseService().getHobbyService().getRepository().findAll());
         
         ButtonCommand<Hobby> command = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.hobby.title"), Hobby.class);
         AbstractController controller = DataLoader.getInstance().loadController(SingleAddController.class, "../fxml/SingleAdd.fxml");
         command.setController(controller);
         mainController.setCommand(command);
         
-        TableSearchStrategy strategy = new HobbiesTableSearchStrategy(table);
+        TableSearchStrategy strategy = new HobbiesTableSearchStrategy(table, false);
         mainController.setStrategy(strategy);
         
         return mainController;

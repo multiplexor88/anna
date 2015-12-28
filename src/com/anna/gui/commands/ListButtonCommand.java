@@ -6,6 +6,7 @@
 package com.anna.gui.commands;
 
 import com.anna.gui.interfaces.ButtonCommand;
+import com.anna.gui.interfaces.TableSearchStrategy;
 import com.anna.gui.tables.TableFactory.TableType;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,11 @@ public class ListButtonCommand extends ButtonCommand
         
         /*Lazy table creation*/
     //    table = TableFactory.create(tableId);
+    }
+
+    @Override
+    public void setData(Object data) {
+        super.setData(data); //To change body of generated methods, choose Tools | Templates.
     }
     
     /*controller must be set*/

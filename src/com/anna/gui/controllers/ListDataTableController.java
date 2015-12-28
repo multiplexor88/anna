@@ -122,6 +122,7 @@ public class ListDataTableController extends AbstractController
         
         table.getTableView().setItems(FXCollections.observableArrayList((Collection)copy));
         
+        //set searching strategy
         strategy = TableSearchStrategy.getStrategyByTableType(table);
     }
     
@@ -142,9 +143,9 @@ public class ListDataTableController extends AbstractController
         {
             table.getTableView().getItems().remove(dataObject);
             ((List)copy).remove(dataObject);
+            strategy.getCopyItems().remove(dataObject);
             if(parentController == null)
                 DataLoader.getDataBaseService().getServiceByTableType(table.getTableId()).getRepository().delete(dataObject);
-            
             
             table.getTableView().getSelectionModel().clearSelection();
         }
@@ -217,7 +218,13 @@ public class ListDataTableController extends AbstractController
             {
                 //check for existing data in copy
                 for(Object o:(Collection)data)
-                   if(!((List)copy).contains(o))((List)copy).add(o); 
+                {
+                   if(!((List)copy).contains(o))
+                   {
+                       ((List)copy).add(o);
+                       strategy.getCopyItems().add(o);
+                   } 
+                }
             }
             else 
                 //check for existing data in copy

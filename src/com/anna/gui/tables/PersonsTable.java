@@ -9,8 +9,10 @@ import com.anna.data.Contact;
 import com.anna.data.Person;
 import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
+import com.anna.gui.controllers.AddressController;
 import com.anna.gui.controllers.ControllerFactory;
 import com.anna.gui.controllers.DataLoader;
+import com.anna.gui.controllers.ListDataTableController;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.ButtonCommand;
 import com.anna.gui.tables.TableFactory.TableType;
@@ -54,7 +56,9 @@ public class PersonsTable<T> extends SimpleTable<T>
                                         break;
                     
                 case "addressList":     ButtonCommand command_2 = new ListButtonCommand(columnNameArr[i]);
-                                        command_2.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADDRESSES));
+                                        AbstractController addressController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADDRESSES);
+                                        ((ListDataTableController)addressController).getSearchTxt().setDisable(true);
+                                        command_2.setController(addressController);
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_2)));
                                         break;
                     
@@ -64,7 +68,8 @@ public class PersonsTable<T> extends SimpleTable<T>
                                         break;
                     
                 case "hobbyList":       ButtonCommand command_4 = new ListButtonCommand(columnNameArr[i]);
-                                        command_4.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_HOBBIES));
+                                        AbstractController hobbyListController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_HOBBIES);
+                                        command_4.setController(hobbyListController);
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_4)));
                                         break;
                     

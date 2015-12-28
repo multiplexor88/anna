@@ -19,22 +19,21 @@ import javafx.collections.FXCollections;
  */
 public class CurrentEventsTableSearchStrategy extends TableSearchStrategy
 {
-    public CurrentEventsTableSearchStrategy(AbstractTable table)
+    public CurrentEventsTableSearchStrategy(AbstractTable table, boolean searchInCurrentData)
     {
-        super(table);
+        super(table, searchInCurrentData);
     }
     
     @Override
     public void search(String existedDataInForm, String typedData) 
     {
-        List dataList = null; 
+        List dataList; 
         
         String ddMM_dateFormatString = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM"));
         
         if(typedData.equals("\b") && existedDataInForm.isEmpty())/*if user delete all data in form*/
-            dataList = DataLoader.getDataBaseService().getEventService().getRepository().findByDateLike(ddMM_dateFormatString + "%");
-        else
-            dataList = DataLoader.getDataBaseService().getEventService().getRepository().findByDateLikeAndNameLike(ddMM_dateFormatString + "%", (existedDataInForm+typedData).trim() + "%");
+                    dataList = DataLoader.getDataBaseService().getEventService().getRepository().findByDateLike(ddMM_dateFormatString + "%");
+        else        dataList = DataLoader.getDataBaseService().getEventService().getRepository().findByDateLikeAndNameLike(ddMM_dateFormatString + "%", (existedDataInForm+typedData).trim() + "%");
         
         table.getTableView().setItems(FXCollections.observableArrayList(dataList));
     }

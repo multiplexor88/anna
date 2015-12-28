@@ -19,6 +19,7 @@ abstract public class ButtonCommand<T>
     protected Class<T>              classType;
     protected AbstractController    controller;
     
+    
     /*some controllers do not have*/
     protected AbstractTable         table;
     

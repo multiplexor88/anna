@@ -6,6 +6,7 @@
 package com.anna.gui.tables;
 import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.interfaces.ButtonCommand;
+import com.anna.gui.interfaces.TableSearchStrategy;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.logging.Level;

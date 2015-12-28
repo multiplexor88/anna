@@ -12,6 +12,8 @@ import com.anna.gui.strategies.HobbiesTableSearchStrategy;
 import com.anna.gui.strategies.OccupationsTableSearchStrategy;
 import com.anna.gui.strategies.PeopleTableSearchStrategy;
 import com.anna.service.DataBaseService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Strategy fro searching data in table table
@@ -19,15 +21,26 @@ import com.anna.service.DataBaseService;
  */
 abstract public class TableSearchStrategy 
 {
+    protected ObservableList copyItems = FXCollections.observableArrayList();
+
+    public ObservableList getCopyItems() {
+        return copyItems;
+    }
+    
     public TableSearchStrategy(){}
     
-    public TableSearchStrategy(AbstractTable table)
+    public TableSearchStrategy(AbstractTable table, boolean searchInCurrentData)
     {
         this.table = table;
+        this.searchInCurrentData = searchInCurrentData;
+        
+        //copy data because if user erases data from searchTxt we need extract data from current table
+        if(this.searchInCurrentData)
+            table.getTableView().getItems().stream().forEach((Object t) ->{copyItems.add(((MyCloneable)t).clone());});
     }
     
     //search over current items in table or over entire database
-    private boolean searchInCurrentData;
+    protected boolean searchInCurrentData;
 
     public boolean isSearchInCurrentData() {
         return searchInCurrentData;
@@ -72,12 +85,12 @@ abstract public class TableSearchStrategy
         {
             case PERSONS_FULL:                  
             case PERSONS_FLP:                   
-            case PERSONS_FL:                    return new PeopleTableSearchStrategy(table);
-            case OCCUPATIONS:                   return new OccupationsTableSearchStrategy(table);
-            case HOBBIES:                       return new HobbiesTableSearchStrategy(table);
-            case EVENTS:                        return new EventsTableSearchStrategy(table);
-            case EVENTS_NAME_DESCRIPT_PERSONS:  return new CurrentEventsTableSearchStrategy(table);
-            case ADDRESSES:                     return new AddressTableSearchStrategy(table);
+            case PERSONS_FL:                    return new PeopleTableSearchStrategy(table, true);
+            case OCCUPATIONS:                   return new OccupationsTableSearchStrategy(table, true);
+            case HOBBIES:                       return new HobbiesTableSearchStrategy(table, true);
+            case EVENTS:                        return new EventsTableSearchStrategy(table, true);
+            case EVENTS_NAME_DESCRIPT_PERSONS:  return new CurrentEventsTableSearchStrategy(table, true);
+            case ADDRESSES:                     return new AddressTableSearchStrategy(table, true);
         }
         
         return null;
