@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -115,6 +116,7 @@ abstract public class AbstractController
             stage.setScene(new Scene(parent));
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+            stage.setOnCloseRequest((WindowEvent e) -> {onCancel();});
             //stage.setResizable(false);
          } 
     }

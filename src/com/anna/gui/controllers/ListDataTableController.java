@@ -212,7 +212,7 @@ public class ListDataTableController extends AbstractController
         command.execute(event);
         Object data = command.getData();
         
-        if(data != null && !((List)copy).contains(data))
+        if(data != null/* && !((List)copy).contains(data)*/)
         {
             if(data instanceof Collection)
             {

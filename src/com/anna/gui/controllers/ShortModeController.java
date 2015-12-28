@@ -9,15 +9,19 @@ import com.anna.data.Event;
 import com.anna.data.Hobby;
 import com.anna.data.Occupation;
 import com.anna.data.Person;
+import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.interfaces.AbstractController;
+import com.anna.gui.interfaces.ButtonCommand;
 import com.anna.gui.tables.TableFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -172,5 +176,31 @@ public class ShortModeController extends AbstractController
         AnchorPane.setLeftAnchor(table.getTableView(), 0.0);
         AnchorPane.setTopAnchor(table.getTableView(), 0.0);
         AnchorPane.setRightAnchor(table.getTableView(), 0.0);
+    }
+    
+    @FXML
+    private void onAddNewEvent(ActionEvent event)
+    {
+        ButtonCommand<Event> com = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.event.title"), Event.class);
+        
+        com.setController(DataLoader.getInstance().loadController(EventController.class, "../fxml/Event.fxml"));
+        
+        com.setData(new com.anna.data.Event());
+        
+        com.execute(event);
+        
+        Object data = com.getData();
+        
+        if(data != null)
+        {
+            //check for existing data in copy
+            if(events.contains((Event)data))
+                return;
+            else events.add((Event)data);
+            
+            DataLoader.getDataBaseService().getServiceByTableType(table.getTableId()).getRepository().save(data);
+
+            table.getTableView().setItems(FXCollections.observableArrayList(events));
+        }
     }
 }

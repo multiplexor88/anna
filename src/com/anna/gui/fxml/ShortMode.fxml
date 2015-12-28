@@ -11,17 +11,15 @@
    <children>
       <AnchorPane fx:id="underTableParent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
+            <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn prefWidth="75.0" text="Column X" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
-               <padding>
-                  <Insets right="60.0" />
-               </padding>
             </TableView>
          </children>
       </AnchorPane>
@@ -32,10 +30,12 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#onFullMode" onDragDetected="#onFullMode" prefHeight="140.0" prefWidth="80.0" text="%key.currentEvents.fullMode" />
-            <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="140.0" prefWidth="80.0" text="%key.general.quit" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#onFullMode" onDragDetected="#onFullMode" prefHeight="140.0" prefWidth="80.0" text="%key.currentEvents.fullMode" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="140.0" prefWidth="80.0" text="%key.general.quit" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onAddNewEvent" onDragDetected="#onFullMode" prefHeight="140.0" prefWidth="80.0" text="%key.event.add" />
          </children>
       </GridPane>
    </children>
