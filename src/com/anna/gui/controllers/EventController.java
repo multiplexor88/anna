@@ -6,7 +6,6 @@
 package com.anna.gui.controllers;
 
 import com.anna.data.Event;
-import com.anna.data.Person;
 import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.interfaces.AbstractController;

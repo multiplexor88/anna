@@ -32,14 +32,10 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#onPeople" prefHeight="140.0" prefWidth="80.0" text="%key.persons.title" />
-            <Button mnemonicParsing="false" onAction="#onEvents" prefHeight="140.0" prefWidth="80.0" text="%key.events.title" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#onFullMode" onDragDetected="#onFullMode" prefHeight="140.0" prefWidth="80.0" text="%key.currentEvents.fullMode" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="140.0" prefWidth="80.0" text="%key.general.quit" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#onFullMode" onDragDetected="#onFullMode" prefHeight="140.0" prefWidth="80.0" text="%key.currentEvents.fullMode" />
+            <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="140.0" prefWidth="80.0" text="%key.general.quit" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

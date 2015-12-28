@@ -89,7 +89,7 @@ public class ShortModeController extends AbstractController
     /**
      * Display who celebrates current holidays
      */
-    @FXML
+    
     private void onPeople()
     {
         /*Search over entire Person database for find persons relate to current events*/
@@ -106,7 +106,7 @@ public class ShortModeController extends AbstractController
     /**
      * Display current events
      */
-    @FXML
+    
     public void onEvents()
     {
         findEvents();

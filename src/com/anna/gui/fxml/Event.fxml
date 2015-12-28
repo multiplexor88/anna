@@ -6,10 +6,10 @@
 
 <VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="277.0" prefWidth="254.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.EventController">
    <children>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
+      <ToolBar prefHeight="39.0" prefWidth="251.0">
         <items>
           <Button mnemonicParsing="false" prefWidth="80.0" text="%key.event.date" />
-            <DatePicker fx:id="dateDtPickr" prefWidth="155.0" />
+            <DatePicker fx:id="dateDtPickr" prefHeight="25.0" prefWidth="152.0" />
         </items>
       </ToolBar>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
