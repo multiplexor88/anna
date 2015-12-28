@@ -18,6 +18,7 @@ import javafx.scene.control.cell.MapValueFactory;
  * table creation
  * Columns are created by standard procedure using MapValueFactory
  * Rows creation must be overrided by user according to used object's fields
+ * @Deprecated
  * @author igor
  */
 abstract public class ComplexTable<T> extends AbstractTable<T>
@@ -25,7 +26,6 @@ abstract public class ComplexTable<T> extends AbstractTable<T>
     protected ObservableList<Map<String, Object>>   items                       = FXCollections.<Map<String, Object>>observableArrayList();
     
     public ComplexTable(DataBaseService dataBaseService, String type) {
-        super(dataBaseService);
     }
 
     @Override

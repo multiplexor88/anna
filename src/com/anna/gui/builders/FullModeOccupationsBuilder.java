@@ -15,6 +15,7 @@ import com.anna.gui.interfaces.ButtonCommand;
 import com.anna.gui.interfaces.TableSearchStrategy;
 import com.anna.gui.strategies.OccupationsTableSearchStrategy;
 import com.anna.gui.controllers.DataLoader;
+import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.tables.TableFactory;
 import com.anna.gui.tables.TableFactory.TableType;
 
@@ -31,7 +32,9 @@ public class FullModeOccupationsBuilder implements Builder
         //mainController.disableOkBtn();
        // mainController.disableCancelBtn();
         
-        mainController.setTable(TableFactory.create(TableType.OCCUPATIONS));
+        AbstractTable table = TableFactory.create(TableType.OCCUPATIONS);
+        mainController.setTable(table);
+        
         //mainController.setData(DataLoader.getDataBaseService().getOccupationService().getRepository().findAll());
         
         ButtonCommand<Occupation> command = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.occupation.title"), Occupation.class);
@@ -39,7 +42,7 @@ public class FullModeOccupationsBuilder implements Builder
         command.setController(controller);
         mainController.setCommand(command);
         
-        TableSearchStrategy strategy = new OccupationsTableSearchStrategy();
+        TableSearchStrategy strategy = new OccupationsTableSearchStrategy(table);
         mainController.setStrategy(strategy);
         
         return mainController;

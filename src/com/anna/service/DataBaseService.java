@@ -114,7 +114,7 @@ public class DataBaseService
         switch(tabId)
         {
             case EVENTS:
-            case EVENTS_NAME_DESCRIPT:      return eventService;
+            case EVENTS_NAME_DESCRIPT_PERSONS:      return eventService;
                 
             case PERSONS_FULL:
             case PERSONS_FLP:

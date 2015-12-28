@@ -48,22 +48,22 @@ public class PersonsTable<T> extends SimpleTable<T>
             
             switch(fieldIdArr[i])
             {
-                case "occupationList":  ButtonCommand command_1 = new ListButtonCommand(DataLoader.getLangResources().getString("key.occupation.title"));
+                case "occupationList":  ButtonCommand command_1 = new ListButtonCommand(columnNameArr[i]);
                                         command_1.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_OCCUPATIONS));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_1)));
                                         break;
                     
-                case "addressList":     ButtonCommand command_2 = new ListButtonCommand(DataLoader.getLangResources().getString("key.addresses.title"));
+                case "addressList":     ButtonCommand command_2 = new ListButtonCommand(columnNameArr[i]);
                                         command_2.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADDRESSES));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_2)));
                                         break;
                     
-                case "contact":         ButtonCommand command_3 = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.contact.title"), Contact.class);
+                case "contact":         ButtonCommand command_3 = new SimpleButtonCommand(columnNameArr[i], Contact.class);
                                         command_3.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.CONTACT));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_3)));
                                         break;
                     
-                case "hobbyList":       ButtonCommand command_4 = new ListButtonCommand(DataLoader.getLangResources().getString("key.event.hobbies"));
+                case "hobbyList":       ButtonCommand command_4 = new ListButtonCommand(columnNameArr[i]);
                                         command_4.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_HOBBIES));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_4)));
                                         break;

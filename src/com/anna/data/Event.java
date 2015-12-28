@@ -65,7 +65,7 @@ public class Event implements MyCloneable
 
     public Event() 
     {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.YYYY");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         date = LocalDate.now().format(dtf);
     }
 

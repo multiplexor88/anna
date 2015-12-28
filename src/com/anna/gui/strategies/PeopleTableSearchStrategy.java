@@ -5,9 +5,11 @@
  */
 package com.anna.gui.strategies;
 
+import com.anna.gui.controllers.DataLoader;
+import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.TableSearchStrategy;
-import com.anna.gui.tables.TableFactory;
 import java.util.List;
+import javafx.collections.FXCollections;
 
 /**
  *
@@ -15,18 +17,26 @@ import java.util.List;
  */
 public class PeopleTableSearchStrategy extends TableSearchStrategy
 {
+    public PeopleTableSearchStrategy(){}
+    
+    public PeopleTableSearchStrategy(AbstractTable table)
+    {
+        super(table);
+    }
+    
     @Override
     public void search(String existedDataInForm, String typedData) 
     {
-        super.search(existedDataInForm, typedData);
-        
         List dataList = null; 
         
         if(typedData.equals("\b") && existedDataInForm.isEmpty())/*if user delete all data in form*/
-            dataList = dataBaseService.getPersonService().getRepository().findAll();
+            //if(!isSearchInCurrentTable)
+                dataList = DataLoader.getDataBaseService().getPersonService().getRepository().findAll();
+           // else
+                
         else
-            dataList = dataBaseService.getPersonService().getRepository().findPersonByLastNameLike((existedDataInForm+typedData).trim() + "%");
+            dataList = DataLoader.getDataBaseService().getPersonService().getRepository().findPersonByLastNameLike((existedDataInForm+typedData).trim() + "%");
         
-        TableFactory.getInstance().create(table.getTableId(), dataList);
+        table.getTableView().setItems(FXCollections.observableArrayList(dataList));
     }
 }

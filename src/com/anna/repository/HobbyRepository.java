@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HobbyRepository extends JpaRepository<Hobby, String>  {
-    List<Hobby> findHobbyByIdLike(String id);
+    List<Hobby> findHobbyByTypeLike(String id);
 }

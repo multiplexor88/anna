@@ -13,6 +13,9 @@ import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.Builder;
 import com.anna.gui.interfaces.ButtonCommand;
 import com.anna.gui.controllers.DataLoader;
+import com.anna.gui.interfaces.AbstractTable;
+import com.anna.gui.interfaces.TableSearchStrategy;
+import com.anna.gui.strategies.HobbiesTableSearchStrategy;
 import com.anna.gui.tables.TableFactory;
 import com.anna.gui.tables.TableFactory.TableType;
 
@@ -33,7 +36,8 @@ public class FullModeHobbiesBuilder implements Builder
         //mainController.getOkBtn().setVisible(true);
        //mainController.getCancelBtn().setVisible(true);
         
-        mainController.setTable(TableFactory.create(TableType.HOBBIES));
+        AbstractTable table = TableFactory.create(TableType.HOBBIES);
+        mainController.setTable(table);
         //mainController.setData(DataLoader.getDataBaseService().getHobbyService().getRepository().findAll());
         
         ButtonCommand<Hobby> command = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.hobby.title"), Hobby.class);
@@ -41,8 +45,8 @@ public class FullModeHobbiesBuilder implements Builder
         command.setController(controller);
         mainController.setCommand(command);
         
-        //TableSearchStrategy strategy = new HobbiesTableSearchStrategy();
-        //mainController.setStrategy(strategy);
+        TableSearchStrategy strategy = new HobbiesTableSearchStrategy(table);
+        mainController.setStrategy(strategy);
         
         return mainController;
     }

@@ -10,7 +10,6 @@ import com.anna.data.Hobby;
 import com.anna.data.Occupation;
 import com.anna.data.Person;
 import com.anna.gui.interfaces.AbstractController;
-import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.tables.TableFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -83,6 +82,7 @@ public class ShortModeController extends AbstractController
         }
         
         ((FullModeController)fullModeController).startTimeService();
+        ((FullModeController)fullModeController).updateData();
         fullModeStage.show();
     }
     
@@ -112,11 +112,10 @@ public class ShortModeController extends AbstractController
         findEvents();
         
         /*attach to table*/
-        table = TableFactory.create(TableFactory.TableType.EVENTS_NAME_DESCRIPT);
+        table = TableFactory.create(TableFactory.TableType.EVENTS_NAME_DESCRIPT_PERSONS);
         table.getTableView().setItems(FXCollections.observableArrayList(events));
         
         localizeTableInParent();
-        //finishCreation();
     }
     
     /**

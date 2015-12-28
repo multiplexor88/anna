@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OccupationRepository extends JpaRepository<Occupation,String>  {
-    public List<Occupation> findOccupationByIdLike(String id);
+    public List<Occupation> findOccupationByTypeLike(String id);
 }

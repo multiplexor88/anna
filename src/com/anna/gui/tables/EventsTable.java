@@ -12,9 +12,7 @@ import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.controllers.ControllerFactory;
 import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.interfaces.AbstractController;
-import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.ButtonCommand;
-import com.anna.gui.tables.TableFactory.TableType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -47,22 +45,22 @@ public class EventsTable extends SimpleTable<Event>
             
             switch(fieldIdArr[i])
             {
-                case "occupationList":  ButtonCommand command_1 = new ListButtonCommand(DataLoader.getLangResources().getString("key.occupation.title"));
+                case "occupationList":  ButtonCommand command_1 = new ListButtonCommand(columnNameArr[i]);
                                         command_1.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_OCCUPATIONS));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_1)));
                                         break;
                     
-                case "description":     ButtonCommand command_2 = new SimpleButtonCommand(DataLoader.getLangResources().getString("key.event.description"), String.class);
+                case "description":     ButtonCommand command_2 = new SimpleButtonCommand(columnNameArr[i], String.class);
                                         command_2.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.TEXT_AREA));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_2)));
                                         break;
                     
-                case "personList":      ButtonCommand command_3 = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
+                case "personList":      ButtonCommand command_3 = new ListButtonCommand(columnNameArr[i]);
                                         command_3.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_3)));
                                         break;
                     
-                case "hobbyList":       ButtonCommand command_4 = new ListButtonCommand(DataLoader.getLangResources().getString("key.event.hobbies"));
+                case "hobbyList":       ButtonCommand command_4 = new ListButtonCommand(columnNameArr[i]);
                                         command_4.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_HOBBIES));
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_4)));
                                         break;

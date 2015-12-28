@@ -1,6 +1,10 @@
 package com.anna.gui.controllers;
 import com.anna.gui.controllers.ControllerFactory.ControllerType;
 import com.anna.gui.interfaces.AbstractController;
+import com.anna.gui.interfaces.TableSearchStrategy;
+import com.anna.gui.strategies.CurrentEventsTableSearchStrategy;
+import com.anna.gui.strategies.EventsTableSearchStrategy;
+import com.anna.gui.strategies.PeopleTableSearchStrategy;
 import com.anna.gui.tables.TableFactory;
 import com.anna.gui.tables.TableFactory.TableType;
 import java.time.LocalDate;
@@ -52,6 +56,21 @@ public class FullModeController extends AbstractController
     
     private ListDataTableController             curTabController;
     
+    /**
+     * Update table data when switch from short mode to full mode
+     */
+    public void updateData()
+    {
+        TableType tableId = table.getTableId();
+        if(tableId.equals(TableType.EVENTS_NAME_DESCRIPT_PERSONS))
+        {
+            String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            List items = DataLoader.getDataBaseService().getEventService().getRepository().findByDate(date); 
+            table.getTableView().setItems(FXCollections.observableArrayList(FXCollections.observableArrayList(items)));
+        }
+        else
+            table.getTableView().setItems(FXCollections.observableArrayList((List)DataLoader.getDataBaseService().getServiceByTableType(tableId).getRepository().findAll()));
+    }
     
     @FXML
     protected void initialize()
@@ -145,9 +164,10 @@ public class FullModeController extends AbstractController
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         List items = DataLoader.getDataBaseService().getEventService().getRepository().findByDate(date); 
         
-        table = TableFactory.create(TableType.EVENTS_NAME_DESCRIPT);
+        table = TableFactory.create(TableType.EVENTS_NAME_DESCRIPT_PERSONS);
         //table.getTableView().setItems(FXCollections.observableArrayList(items));
         curTabController.setTable(table);
+        curTabController.setStrategy(TableSearchStrategy.getStrategyByTableType(table));
         curTabController.setData(FXCollections.observableArrayList(items));
         
         Pane pane = curTabController.getParent();
@@ -189,33 +209,41 @@ public class FullModeController extends AbstractController
         TableType tableId = TableType.valueOf(srcTab.getId());
         switch(tableId)
         {
-            case EVENTS_NAME_DESCRIPT:
+            case EVENTS_NAME_DESCRIPT_PERSONS:
                 curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.EVENT_LIST);
                 String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                table = TableFactory.create(TableType.EVENTS);
+                curTabController.setTable(table);
+                curTabController.setStrategy(TableSearchStrategy.getStrategyByTableType(table));
                 items = DataLoader.getDataBaseService().getEventService().getRepository().findByDate(date); 
                 break;
             case EVENTS:
                 curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.EVENT_LIST);
                 table = TableFactory.create(TableType.EVENTS);
                 curTabController.setTable(table);
+                curTabController.setStrategy(TableSearchStrategy.getStrategyByTableType(table));
                 items = DataLoader.getDataBaseService().getServiceByTableType(tableId).getRepository().findAll();
                 break;
             case PERSONS_FULL:
                 curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.PEOPLE);
                 table = TableFactory.create(TableType.PERSONS_FULL);
                 curTabController.setTable(table);
+                curTabController.setStrategy(TableSearchStrategy.getStrategyByTableType(table));
                 items = DataLoader.getDataBaseService().getServiceByTableType(tableId).getRepository().findAll();
                 break;
             case HOBBIES:
                 curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.FULL_MODE_HOBBIES);
+                //table strategy was set in builder
                 items = DataLoader.getDataBaseService().getServiceByTableType(tableId).getRepository().findAll();
                 break;
             case OCCUPATIONS:
                 curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.FULL_MODE_OCCUPATIONS);
+                //table strategy was set in builder
                 items = DataLoader.getDataBaseService().getServiceByTableType(tableId).getRepository().findAll();
                 break;
         }
         
+        ((ListDataTableController)curTabController).getSearchTxt().clear();
         curTabController.setData(FXCollections.observableArrayList(items));
         
         /*must save data immediately*/
@@ -301,8 +329,6 @@ public class FullModeController extends AbstractController
              updateValue(timeStr);
              Thread.sleep(1000);
          }
-
-         System.err.println("KILL THREAD");
          return timeStr;
      }
  }

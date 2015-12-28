@@ -13,6 +13,7 @@ import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.MyCloneable;
+import com.anna.gui.interfaces.TableSearchStrategy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,7 +22,6 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -37,7 +37,7 @@ public class ListDataTableController extends AbstractController
                                                             deleteBtn,
                                                             okBtn,
                                                             cancelBtn;
-
+    
     public Button getAddBtn() {
         return addBtn;
     }
@@ -121,6 +121,8 @@ public class ListDataTableController extends AbstractController
             ((List)copy).add(((MyCloneable) c).clone());
         
         table.getTableView().setItems(FXCollections.observableArrayList((Collection)copy));
+        
+        strategy = TableSearchStrategy.getStrategyByTableType(table);
     }
     
     @FXML
@@ -192,7 +194,7 @@ public class ListDataTableController extends AbstractController
                     command.setData(new Occupation());
                     break;
                 case EVENTS:
-                case EVENTS_NAME_DESCRIPT:
+                case EVENTS_NAME_DESCRIPT_PERSONS:
                     command.setData(new com.anna.data.Event());
                     break;
                 case ADDRESSES: 
@@ -240,6 +242,8 @@ public class ListDataTableController extends AbstractController
     @FXML
     public void onSearch(KeyEvent keyEvent)
     {
-        
+        String existedDataInForm = searchTxt.getText();
+        String typedData = keyEvent.getCharacter();
+        strategy.search(existedDataInForm, typedData);
     }
 }

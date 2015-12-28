@@ -5,9 +5,11 @@
  */
 package com.anna.gui.strategies;
 
+import com.anna.gui.controllers.DataLoader;
+import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.TableSearchStrategy;
-import com.anna.gui.tables.TableFactory;
 import java.util.List;
+import javafx.collections.FXCollections;
 
 /**
  *
@@ -15,18 +17,23 @@ import java.util.List;
  */
 public class OccupationsTableSearchStrategy extends TableSearchStrategy
 {
+    public OccupationsTableSearchStrategy(){}
+    
+    public OccupationsTableSearchStrategy(AbstractTable table)
+    {
+        super(table);
+    }
+    
     @Override
     public void search(String existedDataInForm, String typedData) 
-    {
-        super.search(existedDataInForm, typedData);
-        
+    {   
         List dataList = null; 
         
         if(typedData.equals("\b") && existedDataInForm.isEmpty())/*if user delete all data in form*/
-            dataList = dataBaseService.getOccupationService().getRepository().findAll();
+            dataList = DataLoader.getDataBaseService().getOccupationService().getRepository().findAll();
         else
-            dataList = dataBaseService.getOccupationService().getRepository().findOccupationByIdLike((existedDataInForm+typedData).trim() + "%");
+            dataList = DataLoader.getDataBaseService().getOccupationService().getRepository().findOccupationByTypeLike((existedDataInForm+typedData).trim() + "%");
         
-        TableFactory.getInstance().create(table.getTableId(), dataList);
+        table.getTableView().setItems(FXCollections.observableArrayList(dataList));
     }
 }

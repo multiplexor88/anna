@@ -23,12 +23,12 @@ public class TableFactory
     static private Map<TableType, AbstractTable> tablePool = new HashMap();
     
     public static enum TableType{   PERSONS_FULL,
-                                    PERSONS_FL,
+                                    PERSONS_FL,//also includes person list which celebrates current events
                                     PERSONS_FLP,
                                     HOBBIES,
                                     OCCUPATIONS,
                                     EVENTS,
-                                    EVENTS_NAME_DESCRIPT,
+                                    EVENTS_NAME_DESCRIPT_PERSONS,
                                     ADDRESSES};
     
     /*Singleton*/
@@ -51,15 +51,15 @@ public class TableFactory
         
             switch(tableId)
             {
-                case PERSONS_FULL:          table = createPersonsFull(tableId, data);break;
-                case PERSONS_FLP:           table = createPersonFLP(tableId, data);break;
-                case PERSONS_FL:            table = createPersonFL(tableId, data);break;
-                case HOBBIES:               table = createHobbies(tableId, data);break;
-                case OCCUPATIONS:           table = createOccupations(tableId, data);break;
-                case EVENTS:                table = createEvents(tableId, data);break;
-                case EVENTS_NAME_DESCRIPT:  table = createEventsNameDescription(tableId, data);break;
-                case ADDRESSES:             table = createAddresses(tableId, data);break;
-                default:                    throw new TypeNotPresentException(tableId.toString(), null);
+                case PERSONS_FULL:                  table = createPersonsFull(tableId, data);break;
+                case PERSONS_FLP:                   table = createPersonFLP(tableId, data);break;
+                case PERSONS_FL:                    table = createPersonFL(tableId, data);break;
+                case HOBBIES:                       table = createHobbies(tableId, data);break;
+                case OCCUPATIONS:                   table = createOccupations(tableId, data);break;
+                case EVENTS:                        table = createEvents(tableId, data);break;
+                case EVENTS_NAME_DESCRIPT_PERSONS:  table = createEventsNameDescription(tableId, data);break;
+                case ADDRESSES:                     table = createAddresses(tableId, data);break;
+                default:                            throw new TypeNotPresentException(tableId.toString(), null);
             }
             
             /*tablePool.put(tableId, table);*/
@@ -165,12 +165,14 @@ public class TableFactory
 
     static private AbstractTable createEventsNameDescription(TableType tableId, Collection data) 
     {
-        AbstractTable table = new EventsTable(tableId, langResources.getString("key.currentEvents.title"));
+        AbstractTable table = new CurrentEventsWithPersonsTable(tableId, langResources.getString("key.currentEvents.title"));
         table.create(   data,
                         new String[]{   langResources.getString("key.event.name"),
-                                        langResources.getString("key.event.description")}, 
+                                        langResources.getString("key.event.description"),
+                                        langResources.getString("key.persons.title")}, 
                         new String[]{   "name", 
-                                        "description"});
+                                        "description",
+                                        "personList"});
         return table;
     }
     

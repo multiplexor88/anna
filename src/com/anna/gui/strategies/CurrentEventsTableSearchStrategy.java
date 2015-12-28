@@ -5,11 +5,13 @@
  */
 package com.anna.gui.strategies;
 
+import com.anna.gui.controllers.DataLoader;
+import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.TableSearchStrategy;
-import com.anna.gui.tables.TableFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javafx.collections.FXCollections;
 
 /**
  *
@@ -17,20 +19,23 @@ import java.util.List;
  */
 public class CurrentEventsTableSearchStrategy extends TableSearchStrategy
 {
+    public CurrentEventsTableSearchStrategy(AbstractTable table)
+    {
+        super(table);
+    }
+    
     @Override
     public void search(String existedDataInForm, String typedData) 
     {
-        super.search(existedDataInForm, typedData);
-        
         List dataList = null; 
         
         String ddMM_dateFormatString = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM"));
         
         if(typedData.equals("\b") && existedDataInForm.isEmpty())/*if user delete all data in form*/
-            dataList = dataBaseService.getEventService().getRepository().findByDateLike(ddMM_dateFormatString + "%");
+            dataList = DataLoader.getDataBaseService().getEventService().getRepository().findByDateLike(ddMM_dateFormatString + "%");
         else
-            dataList = dataBaseService.getEventService().getRepository().findByDateLikeAndNameLike(ddMM_dateFormatString + "%", (existedDataInForm+typedData).trim() + "%");
+            dataList = DataLoader.getDataBaseService().getEventService().getRepository().findByDateLikeAndNameLike(ddMM_dateFormatString + "%", (existedDataInForm+typedData).trim() + "%");
         
-        TableFactory.getInstance().create(table.getTableId(), dataList);
+        table.getTableView().setItems(FXCollections.observableArrayList(dataList));
     }
 }
