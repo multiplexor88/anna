@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -121,6 +122,7 @@ public class ListDataTableController extends AbstractController
             ((List)copy).add(((MyCloneable) c).clone());
         
         table.getTableView().setItems(FXCollections.observableArrayList((Collection)copy));
+        table.getTableView().setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         //set searching strategy
         strategy = TableSearchStrategy.getStrategyByTableType(table);
