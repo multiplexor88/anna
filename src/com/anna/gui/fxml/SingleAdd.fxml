@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 
-<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.SingleAddController">
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.SingleAddController">
    <children>
       <AnchorPane VBox.vgrow="NEVER">
          <children>

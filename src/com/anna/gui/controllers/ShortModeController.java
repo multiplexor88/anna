@@ -23,8 +23,14 @@ import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -43,8 +49,7 @@ public class ShortModeController extends AbstractController
     private Set<Person>             persons                                     = new HashSet();
     
     private Stage                   fullModeStage;
-    
-    
+
     /**
      * Load mainWindowController
      */
@@ -102,7 +107,7 @@ public class ShortModeController extends AbstractController
         /*attach to table*/
         table = TableFactory.create(TableFactory.TableType.PERSONS_FL);
         table.getTableView().setItems(FXCollections.observableArrayList(persons));
-
+        
         //finishCreation();
         localizeTableInParent();
     }
@@ -118,7 +123,6 @@ public class ShortModeController extends AbstractController
         /*attach to table*/
         table = TableFactory.create(TableFactory.TableType.EVENTS_NAME_DESCRIPT_PERSONS);
         table.getTableView().setItems(FXCollections.observableArrayList(events));
-        
         localizeTableInParent();
     }
     
@@ -149,7 +153,7 @@ public class ShortModeController extends AbstractController
             List<Occupation> o = e.getOccupationList();
             for(Occupation _o:o)
                 for(Person p:personList)
-                    if(p.getOccupationList().contains(_o))
+                    if(p.getOccupationList().contains(_o))//do not need with Set!!!
                         persons.add(p);
         }
     }
@@ -169,13 +173,17 @@ public class ShortModeController extends AbstractController
      */
     private void localizeTableInParent()
     {        
-        underTableParent.getChildren().clear();
+     /*   underTableParent.getChildren().clear();
         underTableParent.getChildren().add(table.getTableView());
 
         AnchorPane.setBottomAnchor(table.getTableView(), 0.0);
         AnchorPane.setLeftAnchor(table.getTableView(), 0.0);
         AnchorPane.setTopAnchor(table.getTableView(), 0.0);
         AnchorPane.setRightAnchor(table.getTableView(), 0.0);
+     */
+        table.getTableView().setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        table.getTableView().getStylesheets().add("resources/styles/mainStyle.css");
+        ((BorderPane)parent).setCenter(table.getTableView());
     }
     
     @FXML

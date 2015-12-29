@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.TextAreaController">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="172.0" prefWidth="402.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.TextAreaController">
    <children>
       <TextArea fx:id="textAreaTxt" layoutX="26.0" layoutY="44.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <Button fx:id="cancelBtn" layoutX="339.0" layoutY="136.0" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />

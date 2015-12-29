@@ -6,9 +6,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 
-<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.ContactController">
+<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.ContactController">
    <children>
-      <ToolBar>
+      <ToolBar stylesheets="@../../../../resources/styles/mainStyle.css">
         <items>
           <Button mnemonicParsing="false" prefWidth="160.0" text="%key.contact.cellNumber" />
             <TextField fx:id="cellNumberTxt" prefWidth="200.0" />
