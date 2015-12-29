@@ -74,8 +74,8 @@ and open the template in the editor.
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
-    -fx-border-radius:60;
-    -fx-background-radius:60;
+    -fx-border-radius:0;
+    -fx-background-radius:0;
 }
 
 .button:hover {
@@ -87,6 +87,11 @@ and open the template in the editor.
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
   -fx-text-fill: black;
+}
+
+.tool-bar
+{
+    -fx-background-color:linear-gradient(#7d7d7d, #7d7d7d, black, #7d7d7d);
 }
 
 .button:focused {
@@ -114,4 +119,10 @@ and open the template in the editor.
 
 #hbox{
     -fx-background-color:#1d1d1d;
+}
+
+#a
+{
+    -fx-border-radius:60;
+    -fx-background-radius:60;
 }

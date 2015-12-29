@@ -39,6 +39,7 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
         if(!empty)
         {
             super.updateItem(item, empty);
+            button.setId("a");
             setGraphic(button);
             button.setOnAction((ActionEvent event) -> 
             {
