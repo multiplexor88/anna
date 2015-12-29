@@ -16,15 +16,15 @@
             </TableView>
          </children>
       </AnchorPane>
-      <ToolBar fx:id="toolBar" onKeyPressed="#onKeyPressed">
+      <ToolBar id="toolBar" fx:id="toolBar" onKeyPressed="#onKeyPressed">
         <items>
-          <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" prefWidth="48.0" text="%key.listDataTable.add" />
-            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEdit" prefWidth="48.0" text="%key.listDataTable.Edit" />
+          <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" prefHeight="32.0" prefWidth="105.0" text="%key.listDataTable.add" />
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#onEdit" prefHeight="32.0" prefWidth="105.0" text="%key.listDataTable.Edit" />
             <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="%key.listDataTable.Delete" />
-            <TextField fx:id="searchTxt" onKeyTyped="#onSearch" prefHeight="22.0" prefWidth="275.0" />
-            <Label text="%key.listDataTable.Search" />
+            <TextField fx:id="searchTxt" onKeyTyped="#onSearch" prefHeight="37.0" prefWidth="94.0" />
+            <Label prefHeight="23.0" prefWidth="124.0" text="%key.listDataTable.Search" />
             <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefWidth="48.0" text="%key.general.ok" />
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="32.0" prefWidth="62.0" text="%key.general.cancel" />
         </items>
       </ToolBar>
    </children>

@@ -1,75 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="360.0" prefWidth="318.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.PersonController">
+
+<AnchorPane fx:id="parent" prefHeight="365.0" prefWidth="233.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.PersonController">
    <children>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <items>
-          <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.firstName" />
-            <TextField fx:id="firstNameTxt" prefHeight="22.0" prefWidth="200.0" />
-        </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.lastName" />
-            <TextField fx:id="lastNameTxt" prefHeight="22.0" prefWidth="200.0" />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.patronymic" />
-            <TextField fx:id="patronymicTxt" prefHeight="22.0" prefWidth="200.0" />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="274.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.gender" />
+      <GridPane id="gridPane" gridLinesVisible="true" prefHeight="279.0" prefWidth="233.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="122.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="111.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="66.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="addressBtn" mnemonicParsing="false" onAction="#onAddress" prefHeight="22.0" prefWidth="200.0" text="..." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefHeight="32.0" prefWidth="187.0" text="%key.general.ok" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button fx:id="contactBtn" mnemonicParsing="false" onAction="#onContact" prefHeight="22.0" prefWidth="200.0" text="..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button fx:id="occupationBtn" mnemonicParsing="false" onAction="#onOccupation" prefHeight="22.0" prefWidth="200.0" text="..." GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="32.0" prefWidth="143.0" text="%key.general.cancel" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="14.0" text="Button" visible="false" />
-            <RadioButton fx:id="maleCheck" mnemonicParsing="false" selected="true" text="%key.person.male">
-               <toggleGroup>
-                  <ToggleGroup fx:id="gender" />
-               </toggleGroup>
-            </RadioButton>
+            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
+            <Button fx:id="hobbyBtn" mnemonicParsing="false" onAction="#onHobby" prefHeight="22.0" prefWidth="200.0" text="..." GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="28.0" text="Button" visible="false" />
-            <RadioButton fx:id="femaleCheck" mnemonicParsing="false" text="%key.person.female" toggleGroup="$gender" />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.person.address" />
-            <Button fx:id="addressBtn" mnemonicParsing="false" onAction="#onAddress" prefHeight="22.0" prefWidth="200.0" text="..." />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.contact.title" />
-            <Button fx:id="contactBtn" mnemonicParsing="false" onAction="#onContact" prefHeight="22.0" prefWidth="200.0" text="..." />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.event.hobbies" />
-            <Button fx:id="hobbyBtn" mnemonicParsing="false" onAction="#onHobby" prefHeight="22.0" prefWidth="200.0" text="..." />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.event.occupations" />
-            <Button fx:id="occupationBtn" mnemonicParsing="false" onAction="#onOccupation" prefHeight="22.0" prefWidth="200.0" text="..." />
-         </items>
-      </ToolBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-         <items>
-            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
-            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
-            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
-            <Button mnemonicParsing="false" prefWidth="40.0" text="First Name" visible="false" />
-            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" />
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="22.0" prefWidth="60.0" text="%key.general.cancel" />
-         </items>
-      </ToolBar>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <RadioButton fx:id="maleCheck" mnemonicParsing="false" selected="true" text="%key.person.male">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="femaleCheck" mnemonicParsing="false" text="%key.person.female" toggleGroup="$gender" />
+               </children>
+            </HBox>
+            <Label text="%key.person.firstName" />
+            <Label text="%key.person.lastName" GridPane.rowIndex="1" />
+            <Label text="%key.person.patronymic" GridPane.rowIndex="2" />
+            <Label text="%key.person.gender" GridPane.rowIndex="3" />
+            <Label text="%key.person.address" GridPane.rowIndex="4" />
+            <Label text="%key.contact.title" GridPane.rowIndex="5" />
+            <Label text="%key.event.hobbies" GridPane.rowIndex="6" />
+            <Label text="%key.event.occupations" GridPane.rowIndex="7" />
+            <TextField fx:id="firstNameTxt" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="patronymicTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
    </children>
-</VBox>
+</AnchorPane>

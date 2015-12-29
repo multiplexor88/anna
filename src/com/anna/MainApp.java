@@ -35,8 +35,8 @@ public class MainApp extends Application
         //double ww = controller.getParent().getPrefWidth();
         //double hh = controller.getParent().getPrefHeight();
         
-        double ww = Screen.getPrimary().getBounds().getWidth()/5;
-        double hh = Screen.getPrimary().getBounds().getHeight()/4;
+        double ww = Screen.getPrimary().getBounds().getWidth()/4;
+        double hh = Screen.getPrimary().getBounds().getHeight()/3;
         
         root.setPrefSize(ww, hh);
         

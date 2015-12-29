@@ -39,13 +39,13 @@
       </TabPane>
    </center>
    <bottom>
-      <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox id="hbox" alignment="CENTER_RIGHT">
          <children>
+            <Label fx:id="displayTimeLbl" prefHeight="23.0" prefWidth="308.0" text="%key.fullmode.time" />
+            <Button fx:id="shortModeBtn" mnemonicParsing="false" onAction="#onShortMode" text="%key.mainWindow.shortMode" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="92.0" />
             <Button fx:id="cancelBtn" layoutX="194.0" layoutY="-4.0" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
             <Button fx:id="okBtn" layoutX="461.0" layoutY="3.0" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="60.0" />
-            <Button fx:id="shortModeBtn" mnemonicParsing="false" onAction="#onShortMode" text="%key.mainWindow.shortMode" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="92.0" />
-            <Button fx:id="displayTimeBtn" layoutX="14.0" layoutY="2.0" mnemonicParsing="false" text="TIME" AnchorPane.leftAnchor="10.0" />
          </children>
-      </AnchorPane>
+      </HBox>
    </bottom>
 </BorderPane>

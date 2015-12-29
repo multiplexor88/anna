@@ -2,9 +2,6 @@ package com.anna.gui.controllers;
 import com.anna.gui.controllers.ControllerFactory.ControllerType;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.TableSearchStrategy;
-import com.anna.gui.strategies.CurrentEventsTableSearchStrategy;
-import com.anna.gui.strategies.EventsTableSearchStrategy;
-import com.anna.gui.strategies.PeopleTableSearchStrategy;
 import com.anna.gui.tables.TableFactory;
 import com.anna.gui.tables.TableFactory.TableType;
 import java.time.LocalDate;
@@ -20,7 +17,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -45,7 +42,7 @@ public class FullModeController extends AbstractController
     private TabPane                             tabPane;
     
     @FXML
-    Button                                      displayTimeBtn;
+    Label                                       displayTimeLbl;
     
     Service<String>                             displayTimeService;
 
@@ -115,7 +112,7 @@ public class FullModeController extends AbstractController
                     };
                 }
             };
-            displayTimeBtn.textProperty().bind(displayTimeService.valueProperty());
+            displayTimeLbl.textProperty().bind(displayTimeService.valueProperty());
         }
         displayTimeService.start();
     }

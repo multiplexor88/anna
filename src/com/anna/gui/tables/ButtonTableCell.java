@@ -6,9 +6,9 @@
 package com.anna.gui.tables;
 import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.interfaces.ButtonCommand;
-import com.anna.gui.interfaces.TableSearchStrategy;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -39,7 +39,7 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
         if(!empty)
         {
             super.updateItem(item, empty);
-            button.setId("a");
+            button.setId("tableButton");
             setGraphic(button);
             button.setOnAction((ActionEvent event) -> 
             {
@@ -53,7 +53,8 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
 
                     /*get data and check on null*/
                     Object t = command.getData();
-                    if(t == null)
+                    
+                    if(t == null || (t instanceof Collection && ((Collection)t).size() == ((Collection)item).size()))
                         return;
 
                     /*set data  t to object s*/
