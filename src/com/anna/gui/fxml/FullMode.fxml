@@ -6,13 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.FullModeController">
+<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="934.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.FullModeController">
    <center>
-      <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabPane" prefHeight="738.0" prefWidth="1217.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab fx:id="EVENTS_NAME_DESCRIPT_PERSONS" onSelectionChanged="#onSelectionChanged" text="%key.currentEvents.title">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="461.0" prefWidth="877.0" />
             </content>
           </Tab>
           <Tab fx:id="EVENTS" onSelectionChanged="#onSelectionChanged" text="%key.events.title">
@@ -39,16 +39,26 @@
       </TabPane>
    </center>
    <bottom>
-      <HBox id="hbox" alignment="CENTER_RIGHT">
+      <GridPane id="hbox">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Label id="timeLabel" fx:id="displayTimeLbl" text="%key.fullmode.time">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></Label>
-            <Button fx:id="shortModeBtn" mnemonicParsing="false" onAction="#onShortMode" text="%key.mainWindow.shortMode" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="92.0" />
-            <Button fx:id="cancelBtn" layoutX="194.0" layoutY="-4.0" mnemonicParsing="false" onAction="#onCancel" text="%key.general.cancel" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
-            <Button fx:id="okBtn" layoutX="461.0" layoutY="3.0" mnemonicParsing="false" onAction="#onOk" text="%key.general.ok" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="60.0" />
+               </font>
+            </Label>
+            <Button fx:id="shortModeBtn" mnemonicParsing="false" onAction="#onShortMode" prefHeight="125.0" prefWidth="341.0" text="%key.mainWindow.shortMode" GridPane.columnIndex="1" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="75.0" prefWidth="248.0" text="%key.general.cancel" GridPane.columnIndex="3" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefHeight="76.0" prefWidth="339.0" text="%key.general.ok" GridPane.columnIndex="2" />
          </children>
-      </HBox>
+      </GridPane>
    </bottom>
 </BorderPane>

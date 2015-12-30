@@ -4,15 +4,25 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.ShortModeController">
+<BorderPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.ShortModeController">
    <bottom>
-      <HBox id="hbox" alignment="TOP_RIGHT" prefHeight="16.0" prefWidth="600.0" stylesheets="@../../../../resources/styles/mainStyle.css" BorderPane.alignment="CENTER">
+      <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#onAddNewEvent" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.event.add" />
-            <Button mnemonicParsing="false" onAction="#onFullMode" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.currentEvents.fullMode" />
-            <Button mnemonicParsing="false" onAction="#onCancel" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.general.quit" />
+            <Button mnemonicParsing="false" onAction="#onAddNewEvent" prefHeight="52.0" prefWidth="237.0" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.event.add" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#onFullMode" prefHeight="77.0" prefWidth="293.0" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.currentEvents.fullMode" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="62.0" prefWidth="319.0" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.general.quit" GridPane.columnIndex="3" />
+            <Button disable="true" mnemonicParsing="false" prefHeight="49.0" prefWidth="256.0" text="%key.shortmode.configuration" />
          </children>
-      </HBox>
+      </GridPane>
    </bottom>
    <center>
       <TableView prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER">

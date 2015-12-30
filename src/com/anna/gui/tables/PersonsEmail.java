@@ -5,11 +5,12 @@
  */
 package com.anna.gui.tables;
 
-import com.anna.data.Event;
+import com.anna.data.Contact;
 import com.anna.data.Person;
 import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.controllers.ControllerFactory;
+import com.anna.gui.controllers.ListDataTableController;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.ButtonCommand;
 import javafx.scene.control.TableColumn;
@@ -20,16 +21,18 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author igor
  */
-public class EventsTable extends SimpleTable<Event>
+public class PersonsEmail extends SimpleTable<T>
 {
-    private AbstractController  listDataTableController,
-                                descriptionController;
-    
-    public EventsTable(TableFactory.TableType id, String name) 
+    /**
+     * Create person list table
+     * @param title
+     * @param id: table id
+     */
+    public PersonsEmail(TableFactory.TableType id, String title) 
     {
-        tableName = name;
+        tableName = title;
         tableId = id;
-    }      
+    }
     
     @Override
     protected void createAndSetColumns() 
@@ -49,25 +52,22 @@ public class EventsTable extends SimpleTable<Event>
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_1)));
                                         break;
                     
-                case "description":     ButtonCommand command_2 = new SimpleButtonCommand(columnNameArr[i], String.class);
-                                        command_2.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.TEXT_AREA));
-                                        tc.setCellFactory(e->(new ButtonTableCell<>(command_2)));
-                                        break;
-                    
-                case "personList":      ButtonCommand command_3 = new ListButtonCommand(columnNameArr[i]);
-                                        command_3.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT));
-                                        tc.setCellFactory(e->(new ButtonTableCell<>(command_3)));
-                                        break;
-                    
-                case "hobbyList":       ButtonCommand command_4 = new ListButtonCommand(columnNameArr[i]);
-                                        command_4.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_HOBBIES));
-                                        tc.setCellFactory(e->(new ButtonTableCell<>(command_4)));
-                                        break;
-                    
                 default:                tc.setCellFactory(TextFieldTableCell.<Person>forTableColumn());
                                         break;
             }
+            /**
+             * Add listener for listening cell value changing (deprecated)
+             */
+            /*
+            tc.setOnEditCommit(e->{
+                try {
+                    setOnEditCommitTextCellProcess(e);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(Person_FullTable.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            */
             tableView.getColumns().add(tc);
         }
-    } 
+    }       
 }

@@ -21,7 +21,7 @@ public class TableFactory
     /*reusable table pool*/
     /*Deprecated!!!*/
     static private Map<TableType, AbstractTable> tablePool = new HashMap();
-    
+
     public static enum TableType{   PERSONS_FULL,
                                     PERSONS_FL,//also includes person list which celebrates current events
                                     PERSONS_FLP,
@@ -29,7 +29,8 @@ public class TableFactory
                                     OCCUPATIONS,
                                     EVENTS,
                                     EVENTS_NAME_DESCRIPT_PERSONS,
-                                    ADDRESSES};
+                                    ADDRESSES,
+                                    PERSONS_EMAIL};
     
     /*Singleton*/
     private TableFactory(){}
@@ -59,6 +60,7 @@ public class TableFactory
                 case EVENTS:                        table = createEvents(tableId, data);break;
                 case EVENTS_NAME_DESCRIPT_PERSONS:  table = createEventsNameDescription(tableId, data);break;
                 case ADDRESSES:                     table = createAddresses(tableId, data);break;
+                case PERSONS_EMAIL:                 table = createPersonsEmail(tableId, data);break;
                 default:                            throw new TypeNotPresentException(tableId.toString(), null);
             }
             
@@ -191,4 +193,15 @@ public class TableFactory
         table.create(data);
         return table;
     }
+    
+        private static AbstractTable createPersonsEmail(TableType tableId, Collection data) 
+        {
+            AbstractTable table = new PersonsTable(tableId, langResources.getString("key.persons.title"));
+            table.create(   data, 
+                            new String[]{   langResources.getString("key.person.firstName"), 
+                                            langResources.getString("key.person.lastName")}, 
+                            new String[]{   "firstName", 
+                                            "lastName"});
+        return table;
+        }
 }

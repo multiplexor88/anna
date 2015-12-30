@@ -80,7 +80,7 @@ public class ShortModeController extends AbstractController
         
             Pane pr = fullModeController.getParent();
             double w = Screen.getPrimary().getBounds().getWidth()/2;
-            double h = Screen.getPrimary().getBounds().getHeight()/3;
+            double h = Screen.getPrimary().getBounds().getHeight()/2;
 
             pr.setPrefSize(w, h);
             fullModeStage.setScene(new Scene(pr));

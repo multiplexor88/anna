@@ -157,7 +157,6 @@ public class FullModeController extends AbstractController
          //attach default tab (current events)
         curTabController = (ListDataTableController) ControllerFactory.getInstance().create(ControllerType.EVENT_LIST);
         
-        
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         List items = DataLoader.getDataBaseService().getEventService().getRepository().findByDate(date); 
         

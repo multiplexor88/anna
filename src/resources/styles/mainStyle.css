@@ -59,12 +59,17 @@ and open the template in the editor.
     -fx-background-color: -fx-focus-color;
 }
 
-.text-field {
+.text-field{
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-background-color:#f1f9ff;
     -fx-text-fill:black;
     -fx-font-weight:bold;
+}
+#searchField
+{
+    -fx-background-insets:10 10 10 10;
+    -fx-background-color:#f1f9ff;
 }
 
 #tableButton {
