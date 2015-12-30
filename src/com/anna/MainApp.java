@@ -10,6 +10,7 @@ import com.anna.gui.interfaces.AbstractController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -42,6 +43,7 @@ public class MainApp extends Application
         
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image("resources/figures/logo.jpg"));
         
         controller.setStage(primaryStage);
         //updateTime(controller.getTimeLabel());

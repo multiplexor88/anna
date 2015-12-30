@@ -102,8 +102,8 @@ public class FullModeController extends AbstractController
                                         time.getDayOfMonth() + " " +
                                         time.getDayOfWeek().name() + "  " +
                                         time.getHour() + ":" +
-                                        time.getMinute() + ":" +
-                                        time.getSecond();
+                                        (time.getMinute()< 10 ? ("0" + time.getMinute()) : time.getMinute()) + ":" +
+                                        (time.getSecond() < 10 ? ("0" + time.getSecond()) : time.getSecond());
 
                                 updateValue(timeStr);
                                 Thread.sleep(1000);

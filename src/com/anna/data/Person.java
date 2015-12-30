@@ -1,6 +1,7 @@
 package com.anna.data;
 
 import com.anna.gui.interfaces.MyCloneable;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +22,7 @@ import org.springframework.context.annotation.Lazy;
 
 @Entity
 @Table(name="Person")
-public class Person implements MyCloneable
+public class Person implements MyCloneable, Serializable
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

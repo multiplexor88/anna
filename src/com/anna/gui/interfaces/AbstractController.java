@@ -117,7 +117,7 @@ abstract public class AbstractController
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)event.getSource()).getScene().getWindow());
             stage.setOnCloseRequest((WindowEvent e) -> {onCancel();});
-            //stage.setResizable(false);
+            stage.setResizable(false);
          } 
     }
     

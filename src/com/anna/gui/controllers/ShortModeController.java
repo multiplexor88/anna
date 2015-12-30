@@ -85,6 +85,7 @@ public class ShortModeController extends AbstractController
             pr.setPrefSize(w, h);
             fullModeStage.setScene(new Scene(pr));
             fullModeController.setStage(fullModeStage);
+            fullModeStage.getIcons().add(new Image("resources/figures/logo.jpg"));
             ((FullModeController)fullModeController).setStartView();
             
             /*call short mode controller*/

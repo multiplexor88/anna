@@ -41,7 +41,7 @@ public class PeopleTableSearchStrategy extends TableSearchStrategy
         {
             //extract all data by criteria
             dataList = DataLoader.getDataBaseService().getPersonService().getRepository().findPersonByLastNameLike((existedDataInForm+typedData).trim() + "%");
-            if(copyItems != null || searchInCurrentData)//filter dataList
+            if(copyItems != null && searchInCurrentData)//filter dataList
                 dataList = Arrays.asList(dataList.stream().filter((Object t) -> 
                 {
                     return copyItems.stream().anyMatch((Object t1) -> {

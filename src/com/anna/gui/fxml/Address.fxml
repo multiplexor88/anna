@@ -6,38 +6,45 @@
 <?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 
-<VBox fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.AddressController">
+
+<GridPane id="gridPane" fx:id="parent" gridLinesVisible="true" prefHeight="222.0" prefWidth="500.0" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.AddressController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <ToolBar>
-        <items>
-          <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.country" />
-            <TextField fx:id="countryTxt" prefWidth="200.0" />
-        </items>
-      </ToolBar>
-      <ToolBar>
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.state" />
-            <TextField fx:id="stateTxt" prefWidth="200.0" />
-         </items>
-      </ToolBar>
-      <ToolBar>
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.city" />
-            <TextField fx:id="cityTxt" prefWidth="200.0" />
-         </items>
-      </ToolBar>
-      <ToolBar>
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="%key.address.street" />
-            <TextField fx:id="streetTxt" prefWidth="200.0" />
-         </items>
-      </ToolBar>
-      <ToolBar>
-         <items>
-            <Button mnemonicParsing="false" prefWidth="100.0" text="Email" visible="false" />
-            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefWidth="100.0" text="%key.general.ok" />
-            <Button fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#onCancel" prefWidth="100.0" text="%key.general.cancel" />
-         </items>
-      </ToolBar>
+      <TextField fx:id="stateTxt" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="cityTxt" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="countryTxt" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" />
+      <TextField fx:id="streetTxt" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#onCancel" prefHeight="40.0" prefWidth="303.0" text="%key.general.cancel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefHeight="40.0" prefWidth="303.0" text="%key.general.ok" GridPane.rowIndex="4" />
+      <Label text="%key.address.street" GridPane.rowIndex="3">
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets>
+      </Label>
+      <Label text="%key.address.city" GridPane.rowIndex="2">
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets>
+      </Label>
+      <Label text="%key.address.state" GridPane.rowIndex="1">
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets>
+      </Label>
+      <Label text="%key.address.country">
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets>
+      </Label>
    </children>
-</VBox>
+</GridPane>

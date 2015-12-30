@@ -38,7 +38,7 @@ public class OccupationsTableSearchStrategy extends TableSearchStrategy
         else        
         {
             dataList = DataLoader.getDataBaseService().getOccupationService().getRepository().findOccupationByTypeLike((existedDataInForm+typedData).trim() + "%");
-            if(copyItems != null || searchInCurrentData)//filter dataList
+            if(copyItems != null && searchInCurrentData)//filter dataList
                 dataList = Arrays.asList(dataList.stream().filter((Object t) -> 
                 {
                     return copyItems.stream().anyMatch((Object t1) -> {

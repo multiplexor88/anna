@@ -7,7 +7,6 @@ package com.anna.gui.strategies;
 
 import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.interfaces.AbstractTable;
-import com.anna.gui.interfaces.MyCloneable;
 import com.anna.gui.interfaces.TableSearchStrategy;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +35,7 @@ public class HobbiesTableSearchStrategy extends TableSearchStrategy
         else        
         {
             dataList = DataLoader.getDataBaseService().getHobbyService().getRepository().findHobbyByTypeLike((existedDataInForm+typedData).trim() + "%");
-            if(copyItems != null || searchInCurrentData)//filter dataList
+            if(copyItems != null && searchInCurrentData)//filter dataList
                 dataList = Arrays.asList(dataList.stream().filter((Object t) -> 
                 {
                     return copyItems.stream().anyMatch((Object t1) -> {
