@@ -5,14 +5,14 @@
  */
 package com.anna.gui.tables;
 
-import com.anna.data.Contact;
 import com.anna.data.Person;
 import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.controllers.ControllerFactory;
-import com.anna.gui.controllers.ListDataTableController;
-import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.ButtonCommand;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -21,7 +21,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author igor
  */
-public class PersonsEmail extends SimpleTable<T>
+public class PersonsEmail extends ComplexTable
 {
     /**
      * Create person list table
@@ -32,42 +32,24 @@ public class PersonsEmail extends SimpleTable<T>
     {
         tableName = title;
         tableId = id;
-    }
+    } 
     
     @Override
     protected void createAndSetColumns() 
     {
-        double sz = columnNameArr.length;
+        TableColumn tc1 = new TableColumn<>(columnNameArr[0]);
+        tc1.setCellValueFactory(new PropertyValueFactory<>(fieldIdArr[0]));
+        tc1.setCellFactory(TextFieldTableCell.<Person>forTableColumn());
         
-        for(int i = 0; i < sz; ++i)
-        {
-            TableColumn tc = new TableColumn<>(columnNameArr[i]);
-            
-            tc.setCellValueFactory(new PropertyValueFactory<>(fieldIdArr[i]));
-            
-            switch(fieldIdArr[i])
-            {
-                case "occupationList":  ButtonCommand command_1 = new ListButtonCommand(columnNameArr[i]);
-                                        command_1.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.INTERNAL_OCCUPATIONS));
-                                        tc.setCellFactory(e->(new ButtonTableCell<>(command_1)));
-                                        break;
-                    
-                default:                tc.setCellFactory(TextFieldTableCell.<Person>forTableColumn());
-                                        break;
-            }
-            /**
-             * Add listener for listening cell value changing (deprecated)
-             */
-            /*
-            tc.setOnEditCommit(e->{
-                try {
-                    setOnEditCommitTextCellProcess(e);
-                } catch (InvocationTargetException ex) {
-                    Logger.getLogger(Person_FullTable.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-            */
-            tableView.getColumns().add(tc);
-        }
-    }       
+        TableColumn tc2 = new TableColumn<>(columnNameArr[1]);
+        tc2.setCellValueFactory(new PropertyValueFactory<>(fieldIdArr[1]));
+        tc2.setCellFactory(TextFieldTableCell.<Person>forTableColumn());
+        
+        TableColumn tc3 = new TableColumn<>(columnNameArr[2]);
+        ButtonCommand command = new SimpleButtonCommand(columnNameArr[2], String.class);
+        command.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.SEND_EMAIL_MESSAGE));
+        tc3.setCellFactory(e->(new ButtonTableCell<>(command)));
+        
+        tableView.getColumns().addAll(tc1, tc2, tc3);
+    } 
 }

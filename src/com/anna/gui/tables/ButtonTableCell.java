@@ -78,11 +78,6 @@ public class ButtonTableCell<S,T> extends TableCell<S, T>
             });
         }
     }
-
-
-
-    
-    
 }
 
 /*

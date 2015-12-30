@@ -27,7 +27,6 @@ import javafx.stage.WindowEvent;
  */
 abstract public class AbstractController 
 {
-    public int code;
     /*if this controller has parentController, then it is not responsible
     for saving data to data base
     */

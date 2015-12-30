@@ -6,7 +6,6 @@
 package com.anna.gui.tables;
 
 import com.anna.gui.interfaces.AbstractTable;
-import com.anna.service.DataBaseService;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,9 +23,6 @@ import javafx.scene.control.cell.MapValueFactory;
 abstract public class ComplexTable<T> extends AbstractTable<T>
 {
     protected ObservableList<Map<String, Object>>   items                       = FXCollections.<Map<String, Object>>observableArrayList();
-    
-    public ComplexTable(DataBaseService dataBaseService, String type) {
-    }
 
     @Override
     protected void createAndSetColumns()

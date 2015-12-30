@@ -46,7 +46,8 @@ public class ControllerFactory
                                         TEXT_AREA,                              //description of event
                                         PEOPLE,                                 //LIST of people related to event(s)
                                         FULL_MODE,                              //full mode window
-                                        ADD_PERSONS_TO_EVENT;
+                                        ADD_PERSONS_TO_EVENT,       
+                                        SEND_EMAIL_MESSAGE;
     };
     
     /*contains controllers*/
@@ -106,6 +107,7 @@ public class ControllerFactory
         builderPool.put(ControllerType.PEOPLE, new PersonsBuilder());
         builderPool.put(ControllerType.SHORT_MODE, (Builder) () -> DataLoader.getInstance().loadController(ShortModeController.class, "../fxml/ShortMode.fxml"));
         builderPool.put(ControllerType.FULL_MODE, (Builder) () -> DataLoader.getInstance().loadController(FullModeController.class, "../fxml/FullMode.fxml"));
+        builderPool.put(ControllerType.SEND_EMAIL_MESSAGE, (Builder) () -> DataLoader.getInstance().loadController(EmailController.class, "../fxml/Email.fxml"));
         builderPool.put(ControllerType.ADD_PERSONS_TO_EVENT, new AddPersonsToEventBuilder());
     }
 }

@@ -116,6 +116,7 @@ public class DataBaseService
             case EVENTS:
             case EVENTS_NAME_DESCRIPT_PERSONS:      return eventService;
                 
+            case PERSONS_EMAIL:
             case PERSONS_FULL:
             case PERSONS_FLP:
             case PERSONS_FL:                return personService;

@@ -13,8 +13,10 @@ import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.controllers.ListDataTableController;
 import com.anna.gui.controllers.PersonController;
 import com.anna.gui.interfaces.AbstractController;
+import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.Builder;
 import com.anna.gui.interfaces.ButtonCommand;
+import com.anna.gui.strategies.PeopleTableSearchStrategy;
 import com.anna.gui.tables.TableFactory;
 
 /**
@@ -31,7 +33,9 @@ public class AddPersonsToEventBuilder implements Builder
         mainController.setParentController(DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml"));
         
         mainController.getEditBtn().setDisable(true);
-        mainController.setTable(TableFactory.create(TableFactory.TableType.PERSONS_FLP));
+        AbstractTable table = TableFactory.create(TableFactory.TableType.PERSONS_EMAIL);
+        mainController.setTable(table);
+        mainController.setStrategy(new PeopleTableSearchStrategy(table, true));
         
         ButtonCommand displayDataBasePersonsCommand = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
         ListDataTableController displayDataBasePersonsController = (ListDataTableController) DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml");
@@ -56,10 +60,6 @@ public class AddPersonsToEventBuilder implements Builder
         displayDataBasePersonsController.setOnOkBySelection(true);
         displayDataBasePersonsCommand.setController(displayDataBasePersonsController);       
         mainController.setCommand(displayDataBasePersonsCommand);
-        
-        mainController.code = 0;
-        displayDataBasePersonsController.code = 1;
-        controller.code = 2;
         
         return mainController;
     }

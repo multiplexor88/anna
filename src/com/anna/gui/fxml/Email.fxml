@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox fx:id="parent" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.EmailController">
    <children>
       <GridPane id="gridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="600.0">
@@ -23,7 +22,7 @@
                   <Insets left="10.0" />
                </opaqueInsets>
             </Label>
-            <Label text="%key.unspecified" GridPane.rowIndex="1">
+            <Label text="%key.mail.subject" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets left="10.0" />
                </opaqueInsets>

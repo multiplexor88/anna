@@ -53,7 +53,6 @@ public class CurrentEventsWithPersonsTable extends SimpleTable<Event>
                     
                 case "personList":      ButtonCommand command_3 = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
                                         AbstractController peopleController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.ADD_PERSONS_TO_EVENT);
-                                        peopleController.setStrategy(new PeopleTableSearchStrategy());
                                         command_3.setController(peopleController);
                                         tc.setCellFactory(e->(new ButtonTableCell<>(command_3)));
                                         break;

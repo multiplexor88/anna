@@ -106,7 +106,7 @@ public class ShortModeController extends AbstractController
         findEventsAndPersons();
         
         /*attach to table*/
-        table = TableFactory.create(TableFactory.TableType.PERSONS_FL);
+        table = TableFactory.create(TableFactory.TableType.PERSONS_EMAIL);
         table.getTableView().setItems(FXCollections.observableArrayList(persons));
         
         //finishCreation();

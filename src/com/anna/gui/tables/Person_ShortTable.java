@@ -6,7 +6,6 @@
 package com.anna.gui.tables;
 
 import com.anna.data.Person;
-import com.anna.service.DataBaseService;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -17,11 +16,6 @@ import java.util.Map;
  */
 public class Person_ShortTable extends ComplexTable<Person>
 {   
-
-    public Person_ShortTable(DataBaseService dataBaseService) {
-        super(dataBaseService, "Home");
-    }
-
     @Override
     public void createAndSetRows()
     {

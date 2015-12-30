@@ -196,12 +196,13 @@ public class TableFactory
     
         private static AbstractTable createPersonsEmail(TableType tableId, Collection data) 
         {
-            AbstractTable table = new PersonsTable(tableId, langResources.getString("key.persons.title"));
+            AbstractTable table = new PersonsEmail(tableId, langResources.getString("key.persons.title"));
             table.create(   data, 
                             new String[]{   langResources.getString("key.person.firstName"), 
-                                            langResources.getString("key.person.lastName")}, 
+                                            langResources.getString("key.person.lastName"),
+                                            langResources.getString("key.persons.send_message")}, 
                             new String[]{   "firstName", 
                                             "lastName"});
-        return table;
+            return table;
         }
 }

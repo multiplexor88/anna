@@ -7,12 +7,9 @@ package com.anna.gui.strategies;
 
 import com.anna.gui.controllers.DataLoader;
 import com.anna.gui.interfaces.AbstractTable;
-import com.anna.gui.interfaces.MyCloneable;
 import com.anna.gui.interfaces.TableSearchStrategy;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 
 /**
