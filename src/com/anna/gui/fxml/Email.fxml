@@ -5,9 +5,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="parent" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.EmailController">
+
+<VBox id="hbox" fx:id="parent" stylesheets="@../../../../resources/styles/mainStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.anna.gui.controllers.EmailController">
    <children>
-      <GridPane id="gridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="600.0">
+      <GridPane id="gridPane" gridLinesVisible="true" layoutX="0.5" layoutY="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="205.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="505.0" minWidth="10.0" prefWidth="395.0" />
@@ -15,28 +16,44 @@
         <rowConstraints>
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="%key.mail.address">
+            <Label text="%key.mail.to-address">
                <opaqueInsets>
                   <Insets left="10.0" />
                </opaqueInsets>
             </Label>
-            <Label text="%key.mail.subject" GridPane.rowIndex="1">
+            <Label text="%key.mail.subject" GridPane.rowIndex="2">
                <opaqueInsets>
                   <Insets left="10.0" />
                </opaqueInsets>
             </Label>
             <TextField fx:id="toAddressTxt" prefHeight="50.0" prefWidth="500.0" GridPane.columnIndex="1" />
-            <TextField fx:id="subjectTxt" prefHeight="50.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="subjectTxt" prefHeight="50.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="%key.mail.from-address" GridPane.rowIndex="1" />
+            <TextField fx:id="fromAddressTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TextArea fx:id="message" prefHeight="200.0" prefWidth="200.0" />
-      <HBox id="hbox" alignment="CENTER_RIGHT" prefHeight="9.0" prefWidth="600.0">
+      <TextArea fx:id="messageTxt" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <opaqueInsets>
+            <Insets left="5.0" right="5.0" />
+         </opaqueInsets>
+      </TextArea>
+      <GridPane id="gridPane" layoutY="-2.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Button fx:id="okBtn" mnemonicParsing="false" text="%key.general.ok" />
-            <Button fx:id="cancelBtn" mnemonicParsing="false" text="%key.general.cancel" />
+            <Button fx:id="sendBtn" mnemonicParsing="false" onAction="#onSend" prefHeight="53.0" prefWidth="261.0" text="%key.mail.send" />
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#onOk" prefHeight="39.0" prefWidth="257.0" text="%key.general.ok" GridPane.columnIndex="1" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onCancel" prefHeight="43.0" prefWidth="206.0" text="%key.general.cancel" GridPane.columnIndex="2" />
          </children>
-      </HBox>
+      </GridPane>
    </children>
 </VBox>

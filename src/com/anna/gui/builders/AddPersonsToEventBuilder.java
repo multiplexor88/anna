@@ -16,7 +16,6 @@ import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.AbstractTable;
 import com.anna.gui.interfaces.Builder;
 import com.anna.gui.interfaces.ButtonCommand;
-import com.anna.gui.strategies.PeopleTableSearchStrategy;
 import com.anna.gui.tables.TableFactory;
 
 /**
@@ -35,7 +34,7 @@ public class AddPersonsToEventBuilder implements Builder
         mainController.getEditBtn().setDisable(true);
         AbstractTable table = TableFactory.create(TableFactory.TableType.PERSONS_EMAIL);
         mainController.setTable(table);
-        mainController.setStrategy(new PeopleTableSearchStrategy(table, true));
+        //mainController.setStrategy(new PeopleTableSearchStrategy(table, true));
         
         ButtonCommand displayDataBasePersonsCommand = new ListButtonCommand(DataLoader.getLangResources().getString("key.persons.title"));
         ListDataTableController displayDataBasePersonsController = (ListDataTableController) DataLoader.getInstance().loadController(ListDataTableController.class, "../fxml/ListDataTable.fxml");

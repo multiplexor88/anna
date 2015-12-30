@@ -83,6 +83,7 @@ abstract public class TableSearchStrategy
     {
         switch(table.getTableId())
         {
+            case PERSONS_EMAIL:
             case PERSONS_FULL:                  
             case PERSONS_FLP:                   
             case PERSONS_FL:                    return new PeopleTableSearchStrategy(table, true);
