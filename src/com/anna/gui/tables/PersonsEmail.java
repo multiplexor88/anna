@@ -6,13 +6,9 @@
 package com.anna.gui.tables;
 
 import com.anna.data.Person;
-import com.anna.gui.commands.ListButtonCommand;
 import com.anna.gui.commands.SimpleButtonCommand;
 import com.anna.gui.controllers.ControllerFactory;
 import com.anna.gui.interfaces.ButtonCommand;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -21,7 +17,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author igor
  */
-public class PersonsEmail extends ComplexTable
+public class PersonsEmail extends SimpleTable
 {
     /**
      * Create person list table
@@ -48,7 +44,7 @@ public class PersonsEmail extends ComplexTable
         TableColumn tc3 = new TableColumn<>(columnNameArr[2]);
         ButtonCommand command = new SimpleButtonCommand(columnNameArr[2], String.class);
         command.setController(ControllerFactory.getInstance().create(ControllerFactory.ControllerType.SEND_EMAIL_MESSAGE));
-        tc3.setCellFactory(e->(new ButtonTableCell<>(command)));
+        tc3.setCellFactory(e->(new SendMessageButtonTableCell(command)));
         
         tableView.getColumns().addAll(tc1, tc2, tc3);
     } 

@@ -13,6 +13,7 @@ import com.anna.gui.builders.FullModeOccupationsBuilder;
 import com.anna.gui.builders.InternalHobbiesBuilder;
 import com.anna.gui.builders.InternalOccupationsBuilder;
 import com.anna.gui.builders.PersonsBuilder;
+import com.anna.gui.builders.PropertiesBuilder;
 import com.anna.gui.interfaces.AbstractController;
 import com.anna.gui.interfaces.Builder;
 import java.util.HashMap;
@@ -47,7 +48,9 @@ public class ControllerFactory
                                         PEOPLE,                                 //LIST of people related to event(s)
                                         FULL_MODE,                              //full mode window
                                         ADD_PERSONS_TO_EVENT,       
-                                        SEND_EMAIL_MESSAGE;
+                                        SEND_EMAIL_MESSAGE,
+                                        USER_NAME_PASSWORD,
+                                        PROPERTIES;
     };
     
     /*contains controllers*/
@@ -108,6 +111,8 @@ public class ControllerFactory
         builderPool.put(ControllerType.SHORT_MODE, (Builder) () -> DataLoader.getInstance().loadController(ShortModeController.class, "../fxml/ShortMode.fxml"));
         builderPool.put(ControllerType.FULL_MODE, (Builder) () -> DataLoader.getInstance().loadController(FullModeController.class, "../fxml/FullMode.fxml"));
         builderPool.put(ControllerType.SEND_EMAIL_MESSAGE, (Builder) () -> DataLoader.getInstance().loadController(EmailController.class, "../fxml/Email.fxml"));
+        builderPool.put(ControllerType.USER_NAME_PASSWORD, (Builder) () -> DataLoader.getInstance().loadController(UserNamePasswordController.class, "../fxml/UserNamePassword.fxml"));
         builderPool.put(ControllerType.ADD_PERSONS_TO_EVENT, new AddPersonsToEventBuilder());
+        builderPool.put(ControllerType.PROPERTIES, new PropertiesBuilder());
     }
 }

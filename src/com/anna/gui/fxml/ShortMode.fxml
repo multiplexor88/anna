@@ -20,7 +20,7 @@
             <Button mnemonicParsing="false" onAction="#onAddNewEvent" prefHeight="52.0" prefWidth="237.0" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.event.add" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" onAction="#onFullMode" prefHeight="77.0" prefWidth="293.0" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.currentEvents.fullMode" GridPane.columnIndex="2" />
             <Button mnemonicParsing="false" onAction="#onCancel" prefHeight="62.0" prefWidth="319.0" stylesheets="@../../../../resources/styles/mainStyle.css" text="%key.general.quit" GridPane.columnIndex="3" />
-            <Button disable="true" mnemonicParsing="false" prefHeight="49.0" prefWidth="256.0" text="%key.shortmode.configuration" />
+            <Button fx:id="propertiesBtn" mnemonicParsing="false" onAction="#onProperties" prefHeight="49.0" prefWidth="256.0" text="%key.shortmode.configuration" />
          </children>
       </GridPane>
    </bottom>

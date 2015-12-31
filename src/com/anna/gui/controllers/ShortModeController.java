@@ -41,7 +41,8 @@ import javafx.stage.Stage;
  */
 public class ShortModeController extends AbstractController
 {
-    private AbstractController      fullModeController;
+    private AbstractController      fullModeController,
+                                    propertiesController;
     
     private Stage                   childStage;
     
@@ -50,12 +51,23 @@ public class ShortModeController extends AbstractController
     
     private Stage                   fullModeStage;
 
+    @FXML
+    private Button                  propertiesBtn;
+    
+    @FXML
+    private void onProperties(ActionEvent event)
+    {
+        propertiesController.showDialog(event, DataLoader.getLangResources().getString("key.poperties.title"));
+    }
     /**
      * Load mainWindowController
      */
     @FXML
     protected void initialize()
     {
+        /*load properties controller*/
+        propertiesController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.PROPERTIES);
+        
         /*load cntrollers: FULL_MODE, CURRENT_EVENTS, PEOPLE*/
         fullModeController = ControllerFactory.getInstance().create(ControllerFactory.ControllerType.FULL_MODE);
         

@@ -7,6 +7,7 @@ package com.anna.gui.controllers;
 
 import com.anna.data.Person;
 import com.anna.gui.interfaces.AbstractController;
+import com.sun.mail.smtp.SMTPSaslAuthenticator;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,8 +16,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -31,7 +34,6 @@ public class EmailController extends AbstractController
 {
     @FXML
     private TextField           toAddressTxt,
-                                fromAddressTxt,
                                 subjectTxt;
     
     @FXML
@@ -40,9 +42,16 @@ public class EmailController extends AbstractController
     @FXML
     private void onSend(ActionEvent event)
     {
+        //set default email connection settings
+        PropertiesController propertiesController = (PropertiesController) ControllerFactory.getInstance().create(ControllerFactory.ControllerType.PROPERTIES);
+        String fromAddress = propertiesController.getFromAddressTxt().getText();
+        String psw = propertiesController.getPasswordTxt().getText();
+        String smtp = propertiesController.getSmtpTxt().getText();
+        String port = propertiesController.getPortTxt().getText();
+        String ssl = propertiesController.getSslCheckBox().getText().toLowerCase();
+        
         try {
             //validate data
-            /*validate data*/
             Alert alert = new Alert(Alert.AlertType.ERROR, DataLoader.getLangResources().getString("key.err.mail"));
             String toAddress = toAddressTxt.getText();
             if(toAddress != null && !toAddress.isEmpty() && !toAddress.matches(".*@+.*"))
@@ -51,55 +60,68 @@ public class EmailController extends AbstractController
                 return;
             }
             
-            String fromAddress = fromAddressTxt.getText();
-            if(fromAddress != null && !fromAddress.isEmpty() && !fromAddress.matches(".*@+.*"))
-            {
-                alert.showAndWait();
-                return;
-            }
-            
-            String subject = subjectTxt.getText();
-            String mes = messageTxt.getText();
-            
             //Send message
-            Properties properties = new Properties();
+            Properties props = new Properties();
             
-            properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.smtp.auth", "true");
-            properties.put("mail.smtp.host", "smtp.ukr.net");
-            properties.put("mail.smtp.port", "2525");
+            //igor.dumchykov@yahoo.com
+            //multiplexor88@ukr.net     
+            //anna_soft_mail_robot    //mypassword26112015
             
-            Session session = Session.getDefaultInstance(properties);
-            
+            props.put("mail.smtp.host", smtp);
+            props.put("mail.smtp.port", port);
+            props.put("mail.smtp.starttsl.enable", ssl);
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.socketFactory.port", port);
+            props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+            props.put("mail.smtp.socketFactory.fallback", "false");
+
+            SecurityManager security = System.getSecurityManager();
+
+            Authenticator auth = new SMTPAuthenticator(fromAddress, psw);
+
+            Session session = Session.getDefaultInstance(props, auth);
+
             Message message = new MimeMessage(session);
-            
-            message.setFrom(new InternetAddress("multiplexor88@ukr.net"));
-            
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("multiplexor88@ukr.net"));
-            
+
+            message.setFrom(new InternetAddress(fromAddress));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toAddress));
+
+            String subject = subjectTxt.getText();
             if(subject != null)
-                message.setSubject("subject");
-            
-            message.setText("text");
-            
-            Transport.send(message, "multiplexor88", "plya1955");
+                message.setSubject(subject);
+
+            String mes = messageTxt.getText();
+            message.setText(mes);
+
+            Transport.send(message);
+
+            Alert emailSuccessAlert = new Alert(Alert.AlertType.INFORMATION, DataLoader.getLangResources().getString("key.info.email-success"));
+            emailSuccessAlert.showAndWait();
             
         } catch (AddressException ex) {
             Logger.getLogger(EmailController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (MessagingException ex) {
-            Logger.getLogger(EmailController.class.getName()).log(Level.SEVERE, null, ex);
+            Alert emailErr = new Alert(Alert.AlertType.ERROR, ex.getMessage());
+            emailErr.showAndWait();
         }
-        
     }
             
     //sets person email address if it exists
     @Override
     public void setData(Object data) 
     {
+        clearContext();
+        
         if(data == null)
             return;
-        
+     
         Person p = (Person) data;
+        String toAddress = p.getContact().getEmail();
+        
+        if(toAddress != null && !toAddress.isEmpty())
+            toAddressTxt.setText(toAddress);
+        
     }
 
     @Override
@@ -108,5 +130,22 @@ public class EmailController extends AbstractController
         messageTxt.clear();
         toAddressTxt.clear();
         subjectTxt.clear();
+    }
+}
+
+class SMTPAuthenticator extends javax.mail.Authenticator
+{
+    private String email, password;
+    
+    public SMTPAuthenticator(String email, String password)
+    {
+         this.email = email;
+        this.password = password;
+    }
+    
+    @Override
+    public PasswordAuthentication getPasswordAuthentication()
+    {
+        return new PasswordAuthentication(email, password);
     }
 }
